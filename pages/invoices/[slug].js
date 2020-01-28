@@ -1,12 +1,13 @@
-import {WP_REST_API} from "../../utils/constants"
+import {FY_CUSTOM_API, WP_REST_API} from "../../utils/constants"
 import Invoice from "../../components/Invoice"
-import Nav from "../../components/nav";
+import Nav from "../../components/Nav";
 import React from "react";
+import fetch from "isomorphic-unfetch";
 
-const SinglePost = ({ post }) => (
+const SinglePost = ({ post, logo }) => (
     <div>
 
-        <Nav />
+        <Nav logo={logo.guid.rendered} />
 
         <div className="container">
             <Invoice post={post}></Invoice>
@@ -27,7 +28,10 @@ SinglePost.getInitialProps = async ({ query }) => {
     const res = await fetch(`${WP_REST_API}/invoices?slug=${slug}`)
     const post = await res.json()
 
-    return { post: post[0] }
+    const logoresponse = await fetch((`${FY_CUSTOM_API}/logo`))
+    const logo = await logoresponse.json()
+
+    return { post: post[0], logo }
 }
 
 export default SinglePost

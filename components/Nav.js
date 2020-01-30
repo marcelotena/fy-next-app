@@ -1,13 +1,8 @@
 import { Component } from 'react'
 import Link from 'next/link'
+import Headroom from 'react-headroom'
+import { Container, Row, Col } from 'react-grid-system'
 
-/*const links = [
-  { href: '#', label: 'Contact' },
-  { href: '#', label: 'Log-in' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})*/
 
 export default class Nav extends Component {
 
@@ -15,28 +10,37 @@ export default class Nav extends Component {
         const { logo, menu } = this.props
 
         return (
-            <nav>
-                <div className="container">
-                    <div className='Nav__columns'>
-                        <div className='Nav__column'>
-                            <Link href='/'>
-                                <a><img className='Nav__logo' src={logo} alt=""/></a>
-                            </Link>
-                        </div>
-                        <div className='Nav__column'>
-                            <ul>
-                                {menu.map(({ id, url, title }) => (
-                                    <li key={id}>
-                                        <a href={url}>{title}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <Headroom
+                pinStart={0}
+                style={{
+                    marginBottom: '-93px',
+                    paddingBottom: '93px',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    boxShadow: '0 10px 10px 0 rgba(0, 0, 0, 0.1)',
+                }}
+            >
+                <nav>
+                    <Container>
+                        <Row>
+                            <Col xs={6}>
+                                <Link href='/'>
+                                    <a><img className='Nav__logo' src={logo} alt=""/></a>
+                                </Link>
+                            </Col>
+                            <Col xs={6}>
+                                <ul>
+                                    {menu.map(({ id, url, title }) => (
+                                        <li key={id}>
+                                            <a href={url}>{title}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </Col>
+                        </Row>
+                    </Container>
 
-                { /*language=CSS*/ }
-                <style jsx>{`
+                    { /*language=CSS*/ }
+                    <style jsx>{`
                   :global(body) {
                     margin: 0;
                     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -45,19 +49,21 @@ export default class Nav extends Component {
                   nav {
                     float: left;
                     width: 100%;
-                    position: relative;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     z-index: 101;
                     text-align: center;
                     padding-top: 15px;
-                    padding-bottom: 10px;
+                    padding-bottom: 12px;
 
                     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
                   }
-                  .Nav__columns {
-                    display: flex;
-                    justify-content: space-between;
-
+                  .headroom--unpinned nav {
+                    padding-top: 96px;
+                    margin-top: 96px;
                   }
+
                   ul {
                     float: right;
                   }
@@ -70,9 +76,7 @@ export default class Nav extends Component {
                   li:last-child {
                      border-right: 0;
                   }
-                  .Nav__column {
-                    display: flex;
-                  }
+
                   a {
                     color: #4a4a4a;
                     text-decoration: none;
@@ -87,10 +91,13 @@ export default class Nav extends Component {
                     color: #4a90e2;
                   }
                   .Nav__logo {
+                    float: left;
+                    width: 100%;
                     max-width: 100px;
                   }
                 `}</style>
-            </nav>
+                </nav>
+            </Headroom>
         )
     }
 }

@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import fetch from 'isomorphic-unfetch'
 import {WP_REST_API, FY_CUSTOM_API} from "../utils/constants"
 import Link from 'next/link'
+import { Container, Row, Col } from 'react-grid-system'
 
 const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) => (
     <div className="wrapper">
@@ -15,29 +16,68 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
         <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />
 
         <section className='Home__hero'>
-            <div className="container">
+            <Container>
 
-                <div className="row">
-                    <div className="column">
+                <Row>
+                    <Col md={6}>
                         <h1 className='Home__title'>{homepage.title.rendered}</h1>
                         <div className='Home__content' dangerouslySetInnerHTML={{__html: homepage.content.rendered}}></div>
-                    </div>
+                    </Col>
 
-                    <div className="column">
+                    <Col md={6}>
                         <div className="Home__featured-image">
                             <img src={homepagefeaturedimage.media_details.sizes.full.source_url} alt={homepagefeaturedimage.alt_text}/>
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
 
-            </div>
+            </Container>
         </section>
 
-        <div className='container'>
+
+        <section className='Home__services bg-darkgray-to-white'>
+            <Container>
+
+                <Row>
+                    <Col lg={6} style={{background: '#4a4a4a'}}>
+                        <div className="Home__section-padding">
+                            {homepage.acf.servicios_destacados.map((service, index) => {
+                                return (
+                                    <Row key={index}>
+                                        <Col xs={4}>
+                                            <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
+                                        </Col>
+                                        <Col xs={8}>
+                                            <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
+                                            <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
+                                        </Col>
+                                    </Row>
+                                )
+                            })}
+                        </div>
+                    </Col>
+
+                    <Col lg={6}>
+                        <div className="Home__section-padding">
+                            <h2 className="Home__section-title">{homepage.acf.titulo_seccion_servicios}</h2>
+                            <div className='Home__section-content' dangerouslySetInnerHTML={{__html: homepage.acf.presentacion_servicios}}></div>
+                        </div>
+                    </Col>
+                </Row>
+
+            </Container>
+        </section>
 
 
-            <div className="row">
-                <div className="column">
+
+
+
+
+        <Container style={{display: 'none'}}>
+
+
+            <Row>
+                <Col md={12}>
 
                     <ul>
                         {invoices.map(post => {
@@ -57,22 +97,14 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                         })}
                     </ul>
 
-                </div>
-            </div>
+                </Col>
+            </Row>
 
 
-        </div>
+        </Container>
 
         { /*language=CSS*/ }
         <style jsx>{`
-          :global(.container) {
-            width: 100%;
-            padding-left: 30px;
-            padding-right: 30px;
-            max-width: 1140px;
-            margin: 0 auto;
-          }
-
           :global(html) {
             /* Adjust font size */
             font-size: 100%;
@@ -121,7 +153,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           .Home__title {
             color: white;
             font-size: 48px;
-            line-height: 1.35;
+            line-height: 1.15;
             max-width: 450px;
             margin-bottom: 20px;
           }
@@ -130,7 +162,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             color: white;
             font-size: 24px;
             font-weight: 500;
-            line-height: 1.5;
+            line-height: 1.4;
             max-width: 500px;
           }
 
@@ -140,11 +172,59 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             max-width: 600px;
           }
 
-          :global(.row) {
-            display: flex;
-            justify-content: space-between;
-            margin-left: -30px;
-            margin-right: -30px;
+          .bg-darkgray-to-white {
+              background-color: #4a4a4a;
+              background-image: -webkit-linear-gradient(180deg, white 49.5%, #4a4a4a 49.5%);
+              min-height: 400px;
+          }
+
+          .Home__services__service-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 20px;
+          }
+
+          .Home__services__service-content {
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+          }
+
+          .Home__section-padding {
+            padding: 50px 70px 50px 70px;
+          }
+
+          .Home__section-title {
+            color: #4a4a4a;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+
+            position: relative;
+          }
+
+          .Home__section-title::after {
+            background: #4a90e2;
+            display: block;
+            content: '';
+            width: 130px;
+            height: 4px;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
+
+          .Home__section-content {
+            color: #4a4a4a;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
           }
 
           @media (max-width: 1200px) {
@@ -154,9 +234,12 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           }
 
           @media (max-width: 991px) {
+              .bg-darkgray-to-white {
+                 background-image: -webkit-linear-gradient(90deg, white 49.5%, #4a4a4a 49.5%);
+              }
               .Home__title {
                 font-size: 38px;
-                line-height: 1.30;
+                line-height: 1.20;
                 margin-bottom: 10px;
                 margin-top: 15px;
               }
@@ -178,10 +261,6 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           }
 
           @media (max-width: 767px) {
-              :global(.row) {
-                flex-direction: column;
-              }
-
               .Home__title {
                 text-align: center;
                 margin-left: auto;
@@ -209,13 +288,6 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                 width: 100%;
                 max-width: 450px;
               }
-          }
-
-          :global(.column) {
-            float: left;
-            width: 100%;
-            padding-left: 30px;
-            padding-right: 30px;
           }
 
         `}</style>

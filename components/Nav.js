@@ -13,8 +13,8 @@ export default class Nav extends Component {
             <Headroom
                 pinStart={0}
                 style={{
-                    marginBottom: '-93px',
-                    paddingBottom: '93px',
+                    /*marginBottom: '-86px',
+                    paddingBottom: '86px',*/
                     background: 'rgba(255, 255, 255, 0.9)',
                     boxShadow: '0 10px 10px 0 rgba(0, 0, 0, 0.1)',
                 }}
@@ -22,12 +22,12 @@ export default class Nav extends Component {
                 <nav>
                     <Container>
                         <Row>
-                            <Col xs={6}>
+                            <Col sm={6} xs={4}>
                                 <Link href='/'>
                                     <a><img className='Nav__logo' src={logo} alt=""/></a>
                                 </Link>
                             </Col>
-                            <Col xs={6}>
+                            <Col sm={6} xs={8}>
                                 <ul>
                                     {menu.map(({ id, url, title }) => (
                                         <li key={id}>
@@ -59,13 +59,19 @@ export default class Nav extends Component {
 
                     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
                   }
-                  .headroom--unpinned nav {
-                    padding-top: 96px;
-                    margin-top: 96px;
+                  /*.headroom--unpinned nav {
+                    padding-top: 93px;
+                    margin-top: 93px;
+                  }*/
+
+                  :global(.headroom) {
+                    margin-bottom: -91px;
+                    padding-bottom: 91px;
                   }
 
                   ul {
                     float: right;
+                    padding-left: 0;
                   }
                   li {
                     padding: 4px 16px;
@@ -93,7 +99,36 @@ export default class Nav extends Component {
                   .Nav__logo {
                     float: left;
                     width: 100%;
-                    max-width: 100px;
+                    max-width: 95px;
+                  }
+
+                  @media (max-width: 991px) {
+
+                  }
+
+                  @media (max-width: 767px) {
+                      .Nav__logo {
+                        max-width: 70px;
+                        padding-top: 5px;
+                      }
+
+                      a {
+                        font-size: 0.85rem;
+                      }
+
+                      nav {
+                        padding-top: 10px;
+                        padding-bottom: 6px;
+                      }
+
+                      ul {
+                        margin-top: 14px;
+                      }
+
+                      :global(.headroom) {
+                        margin-bottom: -74px;
+                        padding-bottom: 74px;
+                      }
                   }
                 `}</style>
                 </nav>

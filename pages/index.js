@@ -35,37 +35,43 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
         </section>
 
 
-        <section className='Home__services bg-darkgray-to-white'>
-            <Container>
 
-                <Row>
-                    <Col lg={6} style={{background: '#4a4a4a'}}>
-                        <div className="Home__section-padding">
-                            {homepage.acf.servicios_destacados.map((service, index) => {
-                                return (
-                                    <Row key={index}>
-                                        <Col xs={4}>
-                                            <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
-                                        </Col>
-                                        <Col xs={8}>
-                                            <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
-                                            <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
-                                        </Col>
-                                    </Row>
-                                )
-                            })}
-                        </div>
-                    </Col>
+        <section className='Home__services'>
 
-                    <Col lg={6}>
-                        <div className="Home__section-padding">
-                            <h2 className="Home__section-title">{homepage.acf.titulo_seccion_servicios}</h2>
-                            <div className='Home__section-content' dangerouslySetInnerHTML={{__html: homepage.acf.presentacion_servicios}}></div>
-                        </div>
-                    </Col>
-                </Row>
+            <div className="Home__services__left-column">
 
-            </Container>
+                <div className="Home__services__inner-content Home__section-padding">
+                    {homepage.acf.servicios_destacados.map((service, index) => {
+                        return (
+                            <div className="Home__services__service">
+                                <Row key={index}>
+
+                                    <Col sm={4}>
+                                        <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
+                                    </Col>
+                                    <Col sm={8}>
+                                        <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
+                                        <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
+                                    </Col>
+                                </Row>
+                            </div>
+                        )
+                    })}
+                </div>
+
+            </div>
+
+            <div className="Home__services__right-column">
+
+                <div className="Home__services__inner-content Home__section-padding">
+                    <h2 className="Home__section-title">{homepage.acf.titulo_seccion_servicios}</h2>
+                    <div className='Home__section-content' dangerouslySetInnerHTML={{__html: homepage.acf.presentacion_servicios}}></div>
+                </div>
+
+            </div>
+
+
+
         </section>
 
 
@@ -152,7 +158,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           .Home__title {
             color: white;
-            font-size: 48px;
+            font-size: 3rem; /* 48px */
             line-height: 1.15;
             max-width: 450px;
             margin-bottom: 20px;
@@ -160,7 +166,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           .Home__content {
             color: white;
-            font-size: 24px;
+            font-size: 1.5rem; /* 24px */
             font-weight: 500;
             line-height: 1.4;
             max-width: 500px;
@@ -172,22 +178,44 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             max-width: 600px;
           }
 
-          .bg-darkgray-to-white {
-              background-color: #4a4a4a;
-              background-image: -webkit-linear-gradient(180deg, white 49.5%, #4a4a4a 49.5%);
-              min-height: 400px;
+          .Home__services__left-column,
+          .Home__services__right-column {
+            width: 50%;
+            float: left;
+          }
+
+          .Home__services__left-column .Home__services__inner-content,
+          .Home__services__right-column .Home__services__inner-content {
+            max-width: 570px;
+            box-sizing: border-box;
+          }
+
+          .Home__services__left-column .Home__services__inner-content {
+            float: right;
+          }
+
+          .Home__services__right-column .Home__services__inner-content {
+            float: left;
+          }
+
+          .Home__services__left-column {
+            background: #4a4a4a;
+          }
+
+          .Home__services__service {
+            margin-bottom: 15px;
           }
 
           .Home__services__service-title {
             color: white;
-            font-size: 18px;
+            font-size: 1.125rem; /* 18px */
             font-weight: 500;
             margin-top: 20px;
           }
 
           .Home__services__service-content {
             color: white;
-            font-size: 16px;
+            font-size: 1rem; /* 16px */
             font-weight: 400;
             line-height: 1.5;
           }
@@ -198,7 +226,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           .Home__section-title {
             color: #4a4a4a;
-            font-size: 32px;
+            font-size: 2rem; /* 32px */
             font-weight: 700;
             line-height: 1.3;
 
@@ -222,7 +250,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           .Home__section-content {
             color: #4a4a4a;
-            font-size: 16px;
+            font-size: 1rem; /* 16px */
             font-weight: 400;
             line-height: 1.6;
           }
@@ -234,18 +262,15 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           }
 
           @media (max-width: 991px) {
-              .bg-darkgray-to-white {
-                 background-image: -webkit-linear-gradient(90deg, white 49.5%, #4a4a4a 49.5%);
-              }
               .Home__title {
-                font-size: 38px;
+                font-size: 2.375rem; /* 38px */
                 line-height: 1.20;
                 margin-bottom: 10px;
                 margin-top: 15px;
               }
 
               .Home__content {
-                font-size: 18px;
+                font-size: 1.125rem; /* 18px */
                 line-height: 1.5;
                 max-width: 370px;
               }
@@ -258,6 +283,26 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                 width: 100%;
                 max-width: 450px;
               }
+
+              /* Services section styles */
+              .Home__services__left-column,
+              .Home__services__right-column {
+                width: 100%;
+                float: left;
+              }
+
+              .Home__services__left-column .Home__services__inner-content,
+              .Home__services__right-column .Home__services__inner-content {
+                max-width: 750px;
+                box-sizing: border-box;
+              }
+
+              .Home__services__left-column .Home__services__inner-content,
+              .Home__services__right-column .Home__services__inner-content{
+                float: none;
+                margin: 0 auto;
+              }
+
           }
 
           @media (max-width: 767px) {
@@ -265,12 +310,16 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
+                font-size: 1.8rem;
+                max-width: 400px;
               }
 
               .Home__content {
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
+                font-size: 1.1rem;
+                max-width: 400px;
               }
 
               .Home__hero {
@@ -287,6 +336,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
               .Home__featured-image img {
                 width: 100%;
                 max-width: 450px;
+              }
+
+              .Home__services__service {
+                margin-bottom: 30px;
               }
           }
 

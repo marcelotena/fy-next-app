@@ -5,12 +5,32 @@ import fetch from 'isomorphic-unfetch'
 import {WP_REST_API, FY_CUSTOM_API} from "../utils/constants"
 import Link from 'next/link'
 import { Container, Row, Col } from 'react-grid-system'
+import Swiper from 'react-id-swiper'
+
+
+const params = {
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+    },
+    slidesPerView: 5,
+    slidesPerColumn: 3,
+    slidesPerGroup: 5,
+    spaceBetween: 15
+}
+
 
 const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) => (
+
     <div className="wrapper">
         <Head>
             <title>Home</title>
             <link rel='icon' href='/favicon.ico' />
+            <link rel='stylesheet' href='/css/swiper.min.css' />
         </Head>
 
         <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />
@@ -36,6 +56,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
+
         <section className='Home__services'>
 
             <div className="Home__services__left-column">
@@ -43,8 +64,8 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                 <div className="Home__services__inner-content Home__section-padding">
                     {homepage.acf.servicios_destacados.map((service, index) => {
                         return (
-                            <div className="Home__services__service">
-                                <Row key={index}>
+                            <div className="Home__services__service" key={index}>
+                                <Row>
 
                                     <Col sm={4}>
                                         <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
@@ -74,6 +95,46 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
         </section>
 
+
+
+
+        <section className="Home__clients Home__section-padding bg-lightgray">
+
+            <Container>
+
+                <Row>
+                    <Col md={12}>
+
+                        <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_clientes}</h2>
+
+                    </Col>
+                </Row>
+
+
+                <Row>
+                    <Col md={12}>
+
+
+                        <div className="Home__clients__slider">
+
+                            <Swiper {...params}>
+
+                                {homepage.acf.clientes.map((client, index2) => {
+                                    return (
+                                        <img className="Home__clients__slider-item" src={client.logotipo.url} alt={client.nombre} title={client.nombre} key={index2} />
+                                    )
+                                })}
+
+                            </Swiper>
+
+                        </div>
+
+                    </Col>
+                </Row>
+
+            </Container>
+
+        </section>
 
 
 
@@ -124,6 +185,15 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             font-smoothing: antialiased;
             -webkit-font-smoothing: antialiased;
             text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+          }
+
+          :global(.bg-lightgray) {
+            background: #f6f6f6;
+          }
+
+          section {
+            float: left;
+            width: 100%;
           }
 
           li {
@@ -236,6 +306,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             position: relative;
           }
 
+          .Home__section-title.block-center {
+            text-align: center;
+          }
+
           .Home__section-title::after {
             background: #4a90e2;
             display: block;
@@ -248,11 +322,33 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             bottom: 0;
           }
 
+          .Home__section-title.block-center::after {
+            left: calc(50% - 65px);
+          }
+
           .Home__section-content {
             color: #4a4a4a;
             font-size: 1rem; /* 16px */
             font-weight: 400;
             line-height: 1.6;
+          }
+
+          .Home__clients {
+            box-sizing: border-box;
+          }
+
+          :global(.swiper-slide) {
+            margin-top: 0!important;
+            margin-right: 15px;
+            margin-bottom: 15px;
+          }
+
+          :global(.swiper-container) {
+            padding-bottom: 30px;
+          }
+
+          :global(.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction) {
+            bottom: 0;
           }
 
           @media (max-width: 1200px) {

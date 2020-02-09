@@ -9,6 +9,7 @@ import Swiper from 'react-id-swiper'
 
 
 const params = {
+    direction: 'horizontal',
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
@@ -20,7 +21,29 @@ const params = {
     slidesPerView: 5,
     slidesPerColumn: 3,
     slidesPerGroup: 5,
-    spaceBetween: 15
+    spaceBetween: 15,
+    breakpoints: {
+        1024: {
+            slidesPerView: 5,
+            slidesPerColumn: 3,
+            slidesPerGroup: 5
+        },
+        768: {
+            slidesPerView: 3,
+            slidesPerColumn: 3,
+            slidesPerGroup: 3
+        },
+        640: {
+            slidesPerView: 3,
+            slidesPerColumn: 3,
+            slidesPerGroup: 3
+        },
+        320: {
+            slidesPerView: 2,
+            slidesPerColumn: 4,
+            slidesPerGroup: 2
+        }
+    }
 }
 
 
@@ -343,8 +366,52 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             margin-bottom: 15px;
           }
 
+          .Home__clients__slider {
+            position: relative;
+          }
+
           :global(.swiper-container) {
             padding-bottom: 30px;
+            padding-top: 70px;
+          }
+
+          :global(.swiper-wrapper) {
+            padding-bottom: 30px;
+          }
+
+          :global(.swiper-button-next) {
+            background: url('/img/next-active.png') no-repeat;
+            background-size: contain;
+            width: 40px;
+            height: 40px;
+            top: 30px;
+            right: 45%;
+          }
+
+          :global(.swiper-button-prev) {
+            background: url('/img/prev-active.png') no-repeat;
+            background-size: contain;
+            width: 40px;
+            height: 40px;
+            top: 30px;
+            left: 45%;
+          }
+
+          :global(.swiper-button-next:after) {
+            display: none;
+          }
+
+          :global(.swiper-button-prev:after) {
+            display: none;
+          }
+
+          :global(.swiper-pagination-bullet) {
+            width: 20px;
+            height: 20px;
+          }
+
+          :global(.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet) {
+            margin: 0 6px;
           }
 
           :global(.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction) {
@@ -355,6 +422,16 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
               .Home__featured-image {
                 margin-right: 0;
               }
+          }
+
+          @media (max-width: 1024px) {
+            :global(.swiper-button-next) {
+              right: 0;
+            }
+
+            :global(.swiper-button-prev) {
+              left: 0;
+            }
           }
 
           @media (max-width: 991px) {
@@ -437,6 +514,16 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
               .Home__services__service {
                 margin-bottom: 30px;
               }
+          }
+
+          @media (max-width: 640px) {
+            :global(.swiper-button-next) {
+              right: 0;
+            }
+
+            :global(.swiper-button-prev) {
+              left: 0;
+            }
           }
 
         `}</style>

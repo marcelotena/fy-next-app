@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import fetch from 'isomorphic-unfetch'
@@ -47,154 +47,305 @@ const params = {
 }
 
 
-const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) => (
 
-    <div className="wrapper">
-        <Head>
-            <title>Home</title>
-            <link rel='icon' href='/favicon.ico' />
-            <link rel='stylesheet' href='/css/swiper.min.css' />
-        </Head>
-
-        <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />
-
-        <section className='Home__hero'>
-            <Container>
-
-                <Row>
-                    <Col md={6}>
-                        <h1 className='Home__title'>{homepage.title.rendered}</h1>
-                        <div className='Home__content' dangerouslySetInnerHTML={{__html: homepage.content.rendered}}></div>
-                    </Col>
-
-                    <Col md={6}>
-                        <div className="Home__featured-image">
-                            <img src={homepagefeaturedimage.media_details.sizes.full.source_url} alt={homepagefeaturedimage.alt_text}/>
-                        </div>
-                    </Col>
-                </Row>
-
-            </Container>
-        </section>
+const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) => {
 
 
+    /* Form variables and functions */
+    const [status, setStatus] = useState({
+        submitted: false,
+        submitting: false,
+        info: { error: false, msg: null }
+    })
+
+    const [inputs, setInputs] = useState({
+        name: '',
+        email: '',
+        message: '',
+        privacy: ''
+    })
+
+    const handleResponse = (status, msg) => {
+        if (status === 200) {
+            setStatus({
+                submitted: true,
+                submitting: false,
+                info: { error: false, msg: msg }
+            })
+            setInputs({
+                name: '',
+                email: '',
+                message: '',
+                privacy: ''
+            })
+        } else {
+            setStatus({
+                info: { error: true, msg: msg }
+            })
+        }
+    }
+
+    const handleOnChange = e => {
+        e.persist()
+        setInputs(prev => ({
+            ...prev,
+            [e.target.id]: e.target.value
+        }))
+        setStatus({
+            submitted: false,
+            submitting: false,
+            info: { error: false, msg: null }
+        })
+    }
+
+    const handleOnSubmit = async e => {
+        e.preventDefault()
+        setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
+        const res = await fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputs)
+        })
+        const text = await res.text()
+        handleResponse(res.status, text)
+    }
 
 
-        <section className='Home__services'>
+    return (
+        <div className="wrapper">
+            <Head>
+                <title>Home</title>
+                <link rel='icon' href='/favicon.ico' />
+                <link rel='stylesheet' href='/css/swiper.min.css' />
+            </Head>
 
-            <div className="Home__services__left-column">
+            <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />
 
-                <div className="Home__services__inner-content Home__section-padding">
-                    {homepage.acf.servicios_destacados.map((service, index) => {
-                        return (
-                            <div className="Home__services__service" key={index}>
-                                <Row>
+            <section className='Home__hero'>
+                <Container>
 
-                                    <Col sm={4}>
-                                        <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
-                                    </Col>
-                                    <Col sm={8}>
-                                        <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
-                                        <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
-                                    </Col>
-                                </Row>
+                    <Row>
+                        <Col md={6}>
+                            <h1 className='Home__title'>{homepage.title.rendered}</h1>
+                            <div className='Home__content' dangerouslySetInnerHTML={{__html: homepage.content.rendered}}></div>
+                        </Col>
+
+                        <Col md={6}>
+                            <div className="Home__featured-image">
+                                <img src={homepagefeaturedimage.media_details.sizes.full.source_url} alt={homepagefeaturedimage.alt_text}/>
                             </div>
-                        )
-                    })}
-                </div>
+                        </Col>
+                    </Row>
 
-            </div>
-
-            <div className="Home__services__right-column">
-
-                <div className="Home__services__inner-content Home__section-padding">
-                    <h2 className="Home__section-title">{homepage.acf.titulo_seccion_servicios}</h2>
-                    <div className='Home__section-content' dangerouslySetInnerHTML={{__html: homepage.acf.presentacion_servicios}}></div>
-                </div>
-
-            </div>
-
-
-
-        </section>
+                </Container>
+            </section>
 
 
 
 
-        <section className="Home__clients Home__section-padding bg-lightgray">
+            <section className='Home__services'>
 
-            <Container>
+                <div className="Home__services__left-column">
 
-                <Row>
-                    <Col md={12}>
-
-                        <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_clientes}</h2>
-
-                    </Col>
-                </Row>
-
-
-                <Row>
-                    <Col md={12}>
-
-
-                        <div className="Home__clients__slider">
-
-                            <Swiper {...params}>
-
-                                {homepage.acf.clientes.map((client, index2) => {
-                                    return (
-                                        <img className="Home__clients__slider-item" src={client.logotipo.url} alt={client.nombre} title={client.nombre} key={index2} />
-                                    )
-                                })}
-
-                            </Swiper>
-
-                        </div>
-
-                    </Col>
-                </Row>
-
-            </Container>
-
-        </section>
-
-
-
-
-
-        <Container style={{display: 'none'}}>
-
-
-            <Row>
-                <Col md={12}>
-
-                    <ul>
-                        {invoices.map(post => {
+                    <div className="Home__services__inner-content Home__section-padding">
+                        {homepage.acf.servicios_destacados.map((service, index) => {
                             return (
-                                <li key={post.id}>
-                                    <Link href='/invoices/[slug]' as={`invoices/${post.slug}`}>
-                                        <a>
-                                            <div className="text-content">
-                                                <h2 className='archive-title'>{post.title.rendered}</h2>
-                                            </div>
+                                <div className="Home__services__service" key={index}>
+                                    <Row>
 
-                                        </a>
-                                    </Link>
-
-                                </li>
+                                        <Col sm={4}>
+                                            <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
+                                        </Col>
+                                        <Col sm={8}>
+                                            <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
+                                            <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
+                                        </Col>
+                                    </Row>
+                                </div>
                             )
                         })}
-                    </ul>
+                    </div>
 
-                </Col>
-            </Row>
+                </div>
+
+                <div className="Home__services__right-column">
+
+                    <div className="Home__services__inner-content Home__section-padding">
+                        <h2 className="Home__section-title">{homepage.acf.titulo_seccion_servicios}</h2>
+                        <div className='Home__section-content' dangerouslySetInnerHTML={{__html: homepage.acf.presentacion_servicios}}></div>
+                    </div>
+
+                </div>
 
 
-        </Container>
 
-        { /*language=CSS*/ }
-        <style jsx>{`
+            </section>
+
+
+
+
+            <section className="Home__clients Home__section-padding bg-lightgray">
+
+                <Container>
+
+                    <Row>
+                        <Col md={12}>
+
+                            <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_clientes}</h2>
+
+                        </Col>
+                    </Row>
+
+
+                    <Row>
+                        <Col md={12}>
+
+
+                            <div className="Home__clients__slider">
+
+                                <Swiper {...params}>
+
+                                    {homepage.acf.clientes.map((client, index2) => {
+                                        return (
+                                            <img className="Home__clients__slider-item" src={client.logotipo.url} alt={client.nombre} title={client.nombre} key={index2} />
+                                        )
+                                    })}
+
+                                </Swiper>
+
+                            </div>
+
+                        </Col>
+                    </Row>
+
+                </Container>
+
+            </section>
+
+
+
+
+
+
+
+            <section className="Home__contact bg-darkgray">
+
+                <Container>
+                    <Row>
+
+                        <Col md={12}>
+
+                            <div className="Home__section-padding">
+                                <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_contacto}</h2>
+                            </div>
+
+                        </Col>
+
+                    </Row>
+                </Container>
+
+                <Container>
+                    <Row>
+
+                        <Col md={6}>
+
+                            <form onSubmit={handleOnSubmit}>
+                                <label htmlFor="name">Name*</label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    onChange={handleOnChange}
+                                    required
+                                    value={inputs.name}
+                                />
+                                <label htmlFor="email">Email*</label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    onChange={handleOnChange}
+                                    required
+                                    value={inputs.email}
+                                />
+                                <label htmlFor="message">Message*</label>
+                                <textarea
+                                    id="message"
+                                    onChange={handleOnChange}
+                                    required
+                                    value={inputs.message}
+                                />
+                                <label htmlFor="privacy" className="privacy-label">
+                                    <input
+                                        id="privacy"
+                                        type="checkbox"
+                                        onChange={handleOnChange}
+                                        required
+                                        value={inputs.privacy}
+                                    />
+                                    The data you provide will be processed by FAST AND YOURS, S.L.U. for the purpose of managing your suggestion, claim, question or request for information. The data will be processed according to our contractual relationship with you, and your data will not be disclosed to third parties. You can access, rectify and erase the data, and exercise other rights, as explained in our <a
+                                    href="#">Privacy Policy</a>*
+                                </label>
+                                <button type="submit" disabled={status.submitting} className="submit-contact-btn">
+                                    {!status.submitting
+                                        ? !status.submitted
+                                            ? 'Submit'
+                                            : 'Submitted'
+                                        : 'Submitting...'}
+                                </button>
+                            </form>
+                            {status.info.error && (
+                                <div className="error">Error: {status.info.msg}</div>
+                            )}
+                            {!status.info.error && status.info.msg && (
+                                <div className="success">{status.info.msg}</div>
+                            )}
+
+                        </Col>
+
+                    </Row>
+                </Container>
+
+
+
+            </section>
+
+
+
+
+
+            <Container style={{display: 'none'}}>
+
+
+                <Row>
+                    <Col md={12}>
+
+                        <ul>
+                            {invoices.map(post => {
+                                return (
+                                    <li key={post.id}>
+                                        <Link href='/invoices/[slug]' as={`invoices/${post.slug}`}>
+                                            <a>
+                                                <div className="text-content">
+                                                    <h2 className='archive-title'>{post.title.rendered}</h2>
+                                                </div>
+
+                                            </a>
+                                        </Link>
+
+                                    </li>
+                                )
+                            })}
+                        </ul>
+
+                    </Col>
+                </Row>
+
+
+            </Container>
+
+            { /*language=CSS*/ }
+            <style jsx>{`
           :global(html) {
             /* Adjust font size */
             font-size: 100%;
@@ -212,6 +363,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           :global(.bg-lightgray) {
             background: #f6f6f6;
+          }
+
+          :global(.bg-darkgray) {
+            background: #4a4a4a;
           }
 
           section {
@@ -418,6 +573,134 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             bottom: 0;
           }
 
+
+          .Home__contact {
+            padding-bottom: 70px;
+          }
+
+          /* Form styles */
+          form {
+            display: grid;
+            grid-row-gap: 1em;
+          }
+          label {
+            color: #666666;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            line-height: 1.3;
+          }
+
+          label.privacy-label {
+            font-size: 0.85rem;
+          }
+
+          input,
+          button,
+          textarea,
+          .error,
+          .success {
+            margin: 0;
+            border: 1px solid #d1d1d1;
+            border-radius: 3px;
+            padding: 0.5em;
+            vertical-align: middle;
+            white-space: normal;
+            background: none;
+            line-height: 1;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+          }
+          input[type=checkbox] {
+            margin-right: 10px;
+            margin-bottom: 5px;
+          }
+          button,
+          .error,
+          .success {
+            padding: 0.65em 1em;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+          }
+
+          .submit-contact-btn {
+            justify-self: end;
+            width: 100%;
+            max-width: 200px;
+          }
+
+          textarea {
+            height: 4em;
+            max-width: 622px;
+          }
+          input:focus,
+          textarea:focus,
+          button:focus {
+            outline: 0;
+            border-color: #4a90e2;
+          }
+
+          button:hover {
+            background: rgba(0, 118, 255, 0.8);
+          }
+
+          button:focus {
+            box-shadow: 0 0 0 2px rgba(0, 118, 255, 0.5);
+          }
+
+          :global(
+          .bg-darkgray label,
+          .bg-darkgray,
+          .bg-darkgray .Home__section-title,
+          .bg-darkgray input,
+          .bg-darkgray textarea
+          ) {
+            color: #ffffff;
+          }
+
+          :global(.bg-darkgray a) {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+          }
+
+          :global(.bg-darkgray button) {
+            background: #ffffff;
+            color: #4a4a4a;
+          }
+
+          :global(.bg-darkgray button:hover) {
+            background: #eeeeee;
+          }
+
+          :global(.bg-darkgray button:focus) {
+            background: #eeeeee;
+          }
+          button:disabled {
+            pointer-events: none;
+            background: #999;
+          }
+          .error,
+          .success {
+            background: #ee0000;
+            color: #fff;
+            margin-top: 16px;
+            text-align: center;
+          }
+          .success {
+            background: #7928CA
+          }
+          /* End Form styles */
+
+
+
+
           @media (max-width: 1200px) {
               .Home__featured-image {
                 margin-right: 0;
@@ -527,8 +810,13 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           }
 
         `}</style>
-    </div>
-)
+        </div>
+    );
+
+}
+
+
+
 
 
 Home.getInitialProps = async () => {

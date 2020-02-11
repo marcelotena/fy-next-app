@@ -230,7 +230,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
-            <section className="Home__contact bg-darkgray">
+            <section id="contact" className="Home__contact bg-darkgray">
 
                 <Container>
                     <Row>
@@ -252,7 +252,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                         <Col md={6}>
 
                             <form onSubmit={handleOnSubmit}>
-                                <label htmlFor="name">Name*</label>
+                                <label htmlFor="name">{homepage.acf.etiqueta_nombre}</label>
                                 <input
                                     id="name"
                                     type="text"
@@ -260,7 +260,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                     required
                                     value={inputs.name}
                                 />
-                                <label htmlFor="email">Email*</label>
+                                <label htmlFor="email">{homepage.acf.etiqueta_email}</label>
                                 <input
                                     id="email"
                                     type="email"
@@ -268,7 +268,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                     required
                                     value={inputs.email}
                                 />
-                                <label htmlFor="message">Message*</label>
+                                <label htmlFor="message">{homepage.acf.etiqueta_mensaje}</label>
                                 <textarea
                                     id="message"
                                     onChange={handleOnChange}
@@ -283,8 +283,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                         required
                                         value={inputs.privacy}
                                     />
-                                    The data you provide will be processed by FAST AND YOURS, S.L.U. for the purpose of managing your suggestion, claim, question or request for information. The data will be processed according to our contractual relationship with you, and your data will not be disclosed to third parties. You can access, rectify and erase the data, and exercise other rights, as explained in our <a
-                                    href="#">Privacy Policy</a>*
+                                    <div className="privacy-wrapper" dangerouslySetInnerHTML={{__html: homepage.acf.etiqueta_privacidad}}></div>
                                 </label>
                                 <button type="submit" disabled={status.submitting} className="submit-contact-btn">
                                     {!status.submitting
@@ -294,6 +293,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                         : 'Submitting...'}
                                 </button>
                             </form>
+
                             {status.info.error && (
                                 <div className="error">Error: {status.info.msg}</div>
                             )}
@@ -367,6 +367,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           :global(.bg-darkgray) {
             background: #4a4a4a;
+          }
+
+          :global(p) {
+            margin-top: 0;
           }
 
           section {
@@ -580,10 +584,14 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           /* Form styles */
           form {
-            display: grid;
-            grid-row-gap: 1em;
+            float: left;
+            width: 100%;
           }
           label {
+            float: left;
+            width: 100%;
+            margin-bottom: 5px;
+
             color: #666666;
             font-size: 1rem;
             font-weight: 500;
@@ -595,12 +603,22 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             font-size: 0.85rem;
           }
 
+          label.privacy-label .privacy-wrapper {
+           float: left;
+           width: calc(100% - 45px);
+          }
+
           input,
           button,
           textarea,
           .error,
           .success {
+            float: left;
+            width: 100%;
+            box-sizing: border-box;
+
             margin: 0;
+            margin-bottom: 15px;
             border: 1px solid #d1d1d1;
             border-radius: 3px;
             padding: 0.5em;
@@ -613,12 +631,12 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             transition: all 0.2s ease;
           }
           input[type=checkbox] {
-            margin-right: 10px;
-            margin-bottom: 5px;
+            float: left;
+            width: 15px;
+            margin-right: 5px;
+            margin-bottom: 3px;
           }
-          button,
-          .error,
-          .success {
+          button {
             padding: 0.65em 1em;
             background: #4a90e2;
             color: #fff;
@@ -627,10 +645,11 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             font-weight: 500;
             transition: all 0.2s ease;
             text-transform: uppercase;
+            line-height: 1.3;
           }
 
           .submit-contact-btn {
-            justify-self: end;
+            float: right;
             width: 100%;
             max-width: 200px;
           }
@@ -686,15 +705,24 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
             pointer-events: none;
             background: #999;
           }
+
           .error,
           .success {
-            background: #ee0000;
+            padding: 0.65em 1em;
             color: #fff;
-            margin-top: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            line-height: 1.5;
             text-align: center;
           }
+
+          .error {
+            background: #ee0000;
+          }
           .success {
-            background: #7928CA
+            background: #4a90e2;
           }
           /* End Form styles */
 

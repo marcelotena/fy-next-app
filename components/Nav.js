@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Link from 'next/link'
 import Headroom from 'react-headroom'
 import { Container, Row, Col } from 'react-grid-system'
+import ScrollspyNav from 'react-scrollspy-nav'
 
 
 export default class Nav extends Component {
@@ -30,11 +31,17 @@ export default class Nav extends Component {
                             </Col>
                             <Col sm={6} xs={8}>
                                 <ul>
+                                    <ScrollspyNav
+                                        scrollTargetIds={['services', 'clients', 'contact']}
+                                        activeNavClass='active'
+                                        scrollDuration='500'
+                                    >
                                     {menu.map(({ id, url, title }) => (
-                                        <li key={id}>
-                                            <a href={url}>{title}</a>
-                                        </li>
+                                            <li key={id}>
+                                                <a href={url}>{title}</a>
+                                            </li>
                                     ))}
+                                    </ScrollspyNav>
                                 </ul>
                             </Col>
                         </Row>
@@ -94,7 +101,8 @@ export default class Nav extends Component {
                   a:visited {
                     color: #4a4a4a;
                   }
-                  a:hover {
+                  a:hover,
+                  a.active {
                     color: #4a90e2;
                   }
                   .Nav__logo {

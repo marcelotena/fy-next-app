@@ -145,7 +145,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
-            <section className='Home__services'>
+            <section id="services" className='Home__services'>
 
                 <div className="Home__services__left-column">
 
@@ -186,7 +186,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
-            <section className="Home__clients Home__section-padding bg-lightgray">
+            <section id="clients" className="Home__clients Home__section-padding bg-lightgray">
 
                 <Container>
 

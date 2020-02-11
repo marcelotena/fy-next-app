@@ -155,10 +155,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                 <div className="Home__services__service" key={index}>
                                     <Row>
 
-                                        <Col sm={4}>
+                                        <Col md={4} sm={3}>
                                             <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
                                         </Col>
-                                        <Col sm={8}>
+                                        <Col md={8} sm={9}>
                                             <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
                                             <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
                                         </Col>
@@ -251,55 +251,73 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
                         <Col md={6}>
 
-                            <form onSubmit={handleOnSubmit}>
-                                <label htmlFor="name">{homepage.acf.etiqueta_nombre}</label>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    onChange={handleOnChange}
-                                    required
-                                    value={inputs.name}
-                                />
-                                <label htmlFor="email">{homepage.acf.etiqueta_email}</label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    onChange={handleOnChange}
-                                    required
-                                    value={inputs.email}
-                                />
-                                <label htmlFor="message">{homepage.acf.etiqueta_mensaje}</label>
-                                <textarea
-                                    id="message"
-                                    onChange={handleOnChange}
-                                    required
-                                    value={inputs.message}
-                                />
-                                <label htmlFor="privacy" className="privacy-label">
+                            <div className="Home__contact__section-padding">
+
+                                <form onSubmit={handleOnSubmit}>
+                                    <label htmlFor="name">{homepage.acf.etiqueta_nombre}</label>
                                     <input
-                                        id="privacy"
-                                        type="checkbox"
+                                        id="name"
+                                        type="text"
                                         onChange={handleOnChange}
                                         required
-                                        value={inputs.privacy}
+                                        value={inputs.name}
                                     />
-                                    <div className="privacy-wrapper" dangerouslySetInnerHTML={{__html: homepage.acf.etiqueta_privacidad}}></div>
-                                </label>
-                                <button type="submit" disabled={status.submitting} className="submit-contact-btn">
-                                    {!status.submitting
-                                        ? !status.submitted
-                                            ? 'Submit'
-                                            : 'Submitted'
-                                        : 'Submitting...'}
-                                </button>
-                            </form>
+                                    <label htmlFor="email">{homepage.acf.etiqueta_email}</label>
+                                    <input
+                                        id="email"
+                                        type="email"
+                                        onChange={handleOnChange}
+                                        required
+                                        value={inputs.email}
+                                    />
+                                    <label htmlFor="message">{homepage.acf.etiqueta_mensaje}</label>
+                                    <textarea
+                                        id="message"
+                                        onChange={handleOnChange}
+                                        required
+                                        value={inputs.message}
+                                    />
+                                    <label htmlFor="privacy" className="privacy-label">
+                                        <input
+                                            id="privacy"
+                                            type="checkbox"
+                                            onChange={handleOnChange}
+                                            required
+                                            value={inputs.privacy}
+                                        />
+                                        <div className="privacy-wrapper" dangerouslySetInnerHTML={{__html: homepage.acf.etiqueta_privacidad}}></div>
+                                    </label>
 
-                            {status.info.error && (
-                                <div className="error">Error: {status.info.msg}</div>
-                            )}
-                            {!status.info.error && status.info.msg && (
-                                <div className="success">{status.info.msg}</div>
-                            )}
+                                    <div className="submit-btn-container">
+                                        <button type="submit" disabled={status.submitting} className="submit-contact-btn">
+                                            {!status.submitting
+                                                ? !status.submitted
+                                                    ? 'Submit'
+                                                    : 'Submitted'
+                                                : 'Submitting...'}
+                                        </button>
+                                    </div>
+
+                                </form>
+
+                                {status.info.error && (
+                                    <div className="error">Error: {status.info.msg}</div>
+                                )}
+                                {!status.info.error && status.info.msg && (
+                                    <div className="success">{status.info.msg}</div>
+                                )}
+
+                            </div>
+
+                        </Col>
+
+                        <Col md={6}>
+
+                            <div className="Home__contact__section-padding">
+
+                                <div className='Home__contact__content' dangerouslySetInnerHTML={{__html: homepage.acf.informacion_tratamiento_datos}}></div>
+
+                            </div>
 
                         </Col>
 
@@ -727,6 +745,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
           /* End Form styles */
 
 
+            .Home__contact__content {
+              line-height: 1.5;
+              margin-top: 25px;
+            }
 
 
           @media (max-width: 1200px) {
@@ -825,6 +847,17 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
               .Home__services__service {
                 margin-bottom: 30px;
               }
+
+              .Home__services__left-column .Home__services__inner-content,
+              .Home__services__right-column .Home__services__inner-content {
+                max-width: 540px;
+                box-sizing: content-box;
+              }
+
+              .Home__contact__section-padding {
+                padding-left: 50px;
+                padding-right: 50px;
+              }
           }
 
           @media (max-width: 640px) {
@@ -834,6 +867,14 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
             :global(.swiper-button-prev) {
               left: 0;
+            }
+
+            .submit-contact-btn {
+              float: none;
+            }
+
+            .submit-btn-container {
+              text-align: center;
             }
           }
 

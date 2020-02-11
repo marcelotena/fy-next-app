@@ -4,8 +4,6 @@
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +19,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pages/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-83">
-                  <caret line="609" selection-start-line="609" selection-end-line="609" />
+                <state relative-caret-position="299">
+                  <caret line="289" selection-start-line="289" selection-end-line="289" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -43,11 +41,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pages/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1625">
-                  <caret line="188" column="32" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="32" />
+                <state relative-caret-position="450">
+                  <caret line="872" column="26" lean-forward="true" selection-start-line="872" selection-start-column="26" selection-end-line="872" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -55,11 +53,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/components/Nav.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+                <state relative-caret-position="336">
+                  <caret line="151" selection-start-line="151" selection-end-line="151" />
                   <folding>
                     <element signature="e#0#33#0" expanded="true" />
                   </folding>
@@ -110,8 +108,8 @@
         <option value="$PROJECT_DIR$/pages/contact/index.js" />
         <option value="$PROJECT_DIR$/pages/api/send.js" />
         <option value="$PROJECT_DIR$/next.config.js" />
-        <option value="$PROJECT_DIR$/pages/index.js" />
         <option value="$PROJECT_DIR$/components/Nav.js" />
+        <option value="$PROJECT_DIR$/pages/index.js" />
       </list>
     </option>
   </component>
@@ -242,12 +240,12 @@
       <workItem from="1580144794902" duration="6099000" />
       <workItem from="1580202519718" duration="18137000" />
       <workItem from="1580323039785" duration="1802000" />
-      <workItem from="1581070687997" duration="27111000" />
+      <workItem from="1581070687997" duration="29067000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57590000" />
+    <option name="totallyTimeSpent" value="59546000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -405,22 +403,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index.js">
+    <entry file="file://$PROJECT_DIR$/components/Nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="188" column="32" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="32" />
+        <state relative-caret-position="336">
+          <caret line="151" selection-start-line="151" selection-end-line="151" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/Nav.js">
+    <entry file="file://$PROJECT_DIR$/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+        <state relative-caret-position="450">
+          <caret line="872" column="26" lean-forward="true" selection-start-line="872" selection-start-column="26" selection-end-line="872" selection-end-column="26" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

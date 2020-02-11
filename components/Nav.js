@@ -24,12 +24,12 @@ export default class Nav extends Component {
                 <nav>
                     <Container>
                         <Row>
-                            <Col sm={6} xs={4}>
+                            <Col md={6} sm={4} xs={3}>
                                 <Link href='/'>
                                     <a><img className='Nav__logo' src={logo} alt=""/></a>
                                 </Link>
                             </Col>
-                            <Col sm={6} xs={8}>
+                            <Col md={6} sm={8} xs={9}>
                                 <ul>
                                     <ScrollspyNav
                                         scrollTargetIds={['services', 'clients', 'contact']}
@@ -122,7 +122,7 @@ export default class Nav extends Component {
                       }
 
                       a {
-                        font-size: 0.85rem;
+                        font-size: 0.80rem;
                       }
 
                       nav {
@@ -134,10 +134,42 @@ export default class Nav extends Component {
                         margin-top: 14px;
                       }
 
+                      li {
+                        padding: 4px 10px;
+                      }
+
                       :global(.headroom) {
                         margin-bottom: -74px;
                         padding-bottom: 74px;
                       }
+                  }
+
+                  @media (max-width: 380px) {
+
+                      a {
+                        font-size: 0.85rem;
+                      }
+
+                      li {
+                        padding: 4px 8px;
+                      }
+
+                  }
+
+                  @media (max-width: 350px) {
+                      .Nav__logo {
+                        max-width: 49px;
+                        padding-top: 10px;
+                      }
+
+                      a {
+                        font-size: 0.70rem;
+                      }
+
+                      li {
+                        padding: 4px 8px;
+                      }
+
                   }
                 `}</style>
                 </nav>

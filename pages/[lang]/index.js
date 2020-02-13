@@ -50,7 +50,7 @@ const params = {
 
 
 
-const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) => {
+const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
     const { locale, t } = useTranslation()
 
@@ -336,35 +336,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
-            <Container style={{display: 'none'}}>
 
-
-                <Row>
-                    <Col md={12}>
-
-                        <ul>
-                            {invoices.map(post => {
-                                return (
-                                    <li key={post.id}>
-                                        <Link href='/invoices/[slug]' as={`invoices/${post.slug}`}>
-                                            <a>
-                                                <div className="text-content">
-                                                    <h2 className='archive-title'>{post.title.rendered}</h2>
-                                                </div>
-
-                                            </a>
-                                        </Link>
-
-                                    </li>
-                                )
-                            })}
-                        </ul>
-
-                    </Col>
-                </Row>
-
-
-            </Container>
 
             { /*language=CSS*/ }
             <style jsx>{`
@@ -920,11 +892,7 @@ Home.getInitialProps = async (ctx) => {
     const homepagefeaturedimageResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/media/${homepage["featured_media"]}`)
     const homepagefeaturedimage = await homepagefeaturedimageResponse.json()
 
-    // CPT call, Invoices
-    const invoicesResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/invoices`)
-    const invoices = await invoicesResponse.json()
-
-    return { logo, primarymenu, homepage, homepagefeaturedimage, invoices }
+    return { logo, primarymenu, homepage, homepagefeaturedimage }
 }
 
 export default withLocale(Home)

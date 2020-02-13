@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, {useContext, useState} from 'react'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import fetch from 'isomorphic-unfetch'
-import {WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
+import {DOMAIN_URL, WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
 import Link from 'next/link'
 import { Container, Row, Col } from 'react-grid-system'
 import Swiper from 'react-id-swiper'
 import withLocale from '../../hocs/withLocale'
 import useTranslation from '../../hooks/useTranslation'
+import { defaultLocale } from "../../translations/config";
 
 const params = {
     direction: 'horizontal',
@@ -256,7 +257,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                             <div className="Home__contact__section-padding">
 
                                 <form onSubmit={handleOnSubmit}>
-                                    <label htmlFor="name">{homepage.acf.etiqueta_nombre}</label>
+                                    <label htmlFor="name">{t('name_tag')}</label>
                                     <input
                                         id="name"
                                         type="text"
@@ -264,7 +265,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                         required
                                         value={inputs.name}
                                     />
-                                    <label htmlFor="email">{homepage.acf.etiqueta_email}</label>
+                                    <label htmlFor="email">{t('email_tag')}</label>
                                     <input
                                         id="email"
                                         type="email"
@@ -272,7 +273,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                         required
                                         value={inputs.email}
                                     />
-                                    <label htmlFor="message">{homepage.acf.etiqueta_mensaje}</label>
+                                    <label htmlFor="message">{t('message_tag')}</label>
                                     <textarea
                                         id="message"
                                         onChange={handleOnChange}
@@ -294,9 +295,9 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
                                         <button type="submit" disabled={status.submitting} className="submit-contact-btn">
                                             {!status.submitting
                                                 ? !status.submitted
-                                                    ? 'Submit'
-                                                    : 'Submitted'
-                                                : 'Submitting...'}
+                                                    ? t('submit')
+                                                    : t('submitted')
+                                                : t('submitting')}
                                         </button>
                                     </div>
 
@@ -430,7 +431,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
           .Home__title {
             color: white;
-            font-size: 3rem; /* 48px */
+            font-size: 2.8rem; /* 48px */
             line-height: 1.15;
             max-width: 450px;
             margin-bottom: 20px;
@@ -890,26 +891,36 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
 
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async (ctx) => {
+
+    // Locale
+    let locale;
+
+    if (ctx.query.lang === defaultLocale) {
+        locale = '';
+    } else {
+        locale = `/${ctx.query.lang}`;
+    }
+
     // Header logo, selected in WordPress/Appearance/Customization
-    const logoResponse = await fetch((`${FY_CUSTOM_API}/logo`))
+    const logoResponse = await fetch((`${DOMAIN_URL}${FY_CUSTOM_API}/logo`))
     const logo = await logoResponse.json()
 
     // Primary menu, change ID with your primary menu
     const primarymenuId = 3
-    const primarymenuResponse = await fetch(`${WP_REST_API}/menus/${primarymenuId}`)
+    const primarymenuResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/menus/${primarymenuId}`)
     const primarymenu = await primarymenuResponse.json()
 
     // Get WordPress current page that is set as front-page
-    const homepageResponse = await fetch(`${FY_CUSTOM_API}/frontpage`)
+    const homepageResponse = await fetch(`${DOMAIN_URL}${locale}${FY_CUSTOM_API}/frontpage`)
     const homepage = await homepageResponse.json()
 
     // Fetch Homepage featured image when we have its ID
-    const homepagefeaturedimageResponse = await fetch(`${WP_REST_API}/media/${homepage["featured_media"]}`)
+    const homepagefeaturedimageResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/media/${homepage["featured_media"]}`)
     const homepagefeaturedimage = await homepagefeaturedimageResponse.json()
 
     // CPT call, Invoices
-    const invoicesResponse = await fetch(`${WP_REST_API}/invoices`)
+    const invoicesResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/invoices`)
     const invoices = await invoicesResponse.json()
 
     return { logo, primarymenu, homepage, homepagefeaturedimage, invoices }

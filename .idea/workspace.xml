@@ -4,8 +4,6 @@
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/[lang]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/strings.js" beforeDir="false" afterPath="$PROJECT_DIR$/translations/strings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/[lang]/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="299" column="66" lean-forward="true" selection-start-line="299" selection-start-column="66" selection-end-line="299" selection-end-column="66" />
+            <state relative-caret-position="425">
+              <caret line="911" column="67" selection-start-line="911" selection-start-column="67" selection-end-line="911" selection-end-column="67" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -48,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/translations/strings.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -139,8 +137,8 @@
         <option value="$PROJECT_DIR$/context/LocaleContext.js" />
         <option value="$PROJECT_DIR$/components/Nav.js" />
         <option value="$PROJECT_DIR$/utils/constants.js" />
-        <option value="$PROJECT_DIR$/pages/[lang]/index.js" />
         <option value="$PROJECT_DIR$/translations/strings.js" />
+        <option value="$PROJECT_DIR$/pages/[lang]/index.js" />
       </list>
     </option>
   </component>
@@ -284,12 +282,12 @@
       <workItem from="1580323039785" duration="1802000" />
       <workItem from="1581070687997" duration="29757000" />
       <workItem from="1581454056822" duration="940000" />
-      <workItem from="1581509289377" duration="8872000" />
+      <workItem from="1581509289377" duration="10181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70048000" />
+    <option name="totallyTimeSpent" value="71357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -304,7 +302,7 @@
     <frame x="-2560" y="-617" width="1280" height="1110" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49620637" visible="true" weight="0.14378029" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49620637" visible="true" weight="0.14378029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5037936" side_tool="true" weight="0.13531353" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -320,7 +318,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.18172888" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.18172888" />
       <window_info anchor="bottom" id="GraphQL" order="12" weight="0.32959184" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -526,20 +524,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/[lang]/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="299" column="66" lean-forward="true" selection-start-line="299" selection-start-column="66" selection-end-line="299" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/translations/strings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/[lang]/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="911" column="67" selection-start-line="911" selection-start-column="67" selection-end-line="911" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

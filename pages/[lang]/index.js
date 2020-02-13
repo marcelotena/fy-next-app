@@ -312,6 +312,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, invoices, logo }) 
 
                             </div>
 
+
                         </Col>
 
                         <Col md={6}>
@@ -908,7 +909,7 @@ Home.getInitialProps = async (ctx) => {
 
     // Primary menu, change ID with your primary menu
     const primarymenuId = 3
-    const primarymenuResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/menus/${primarymenuId}`)
+    const primarymenuResponse = await fetch(`${DOMAIN_URL}${locale}${WP_REST_API}/menus/${primarymenuId}`)
     const primarymenu = await primarymenuResponse.json()
 
     // Get WordPress current page that is set as front-page

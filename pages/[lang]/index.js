@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
+import Footer from '../../components/Footer'
 import fetch from 'isomorphic-unfetch'
 import {DOMAIN_URL, WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
 import Link from 'next/link'
@@ -50,6 +51,8 @@ const params = {
 
 
 
+
+
 const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
     const { locale, t } = useTranslation()
@@ -65,7 +68,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
         name: '',
         email: '',
         message: '',
-        privacy: ''
+        privacy: false,
+        language: `${locale}`,
+        message_ok: `${t('message_sent')}`,
+        message_error: `${t('message_error')}`
     })
 
     const handleResponse = (status, msg) => {
@@ -79,7 +85,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 name: '',
                 email: '',
                 message: '',
-                privacy: ''
+                privacy: false,
+                language: `${locale}`,
+                message_ok: `${t('message_sent')}`,
+                message_error: `${t('message_error')}`
             })
         } else {
             setStatus({
@@ -93,6 +102,19 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
         setInputs(prev => ({
             ...prev,
             [e.target.id]: e.target.value
+        }))
+        setStatus({
+            submitted: false,
+            submitting: false,
+            info: { error: false, msg: null }
+        })
+    }
+
+    const handleCheckboxOnChange = e => {
+        e.persist()
+        setInputs(prev => ({
+            ...prev,
+            [e.target.id]: e.target.checked
         }))
         setStatus({
             submitted: false,
@@ -257,6 +279,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                             <div className="Home__contact__section-padding">
 
                                 <form onSubmit={handleOnSubmit}>
+                                    <input type="text" hidden readOnly value={inputs.language}/>
+                                    <input type="text" hidden readOnly value={inputs.message_ok}/>
+                                    <input type="text" hidden readOnly value={inputs.message_error}/>
+
                                     <label htmlFor="name">{t('name_tag')}</label>
                                     <input
                                         id="name"
@@ -284,7 +310,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                                         <input
                                             id="privacy"
                                             type="checkbox"
-                                            onChange={handleOnChange}
+                                            onChange={handleCheckboxOnChange}
                                             required
                                             value={inputs.privacy}
                                         />
@@ -331,6 +357,15 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
 
             </section>
+
+
+
+
+
+
+
+
+            <Footer />
 
 
 
@@ -523,6 +558,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
             position: relative;
           }
 
+          .Home__clients__slider-item {
+            max-width: 260px;
+          }
+
           :global(.swiper-container) {
             padding-bottom: 30px;
             padding-top: 70px;
@@ -705,7 +744,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
             padding: 0.65em 1em;
             color: #fff;
             border: none;
-            cursor: pointer;
+            cursor: default;
             font-weight: 500;
             transition: all 0.2s ease;
             line-height: 1.5;

@@ -7,9 +7,12 @@ import {DOMAIN_URL, WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
 import Link from 'next/link'
 import { Container, Row, Col } from 'react-grid-system'
 import Swiper from 'react-id-swiper'
+
 import withLocale from '../../hocs/withLocale'
 import useTranslation from '../../hooks/useTranslation'
-import { defaultLocale } from "../../translations/config";
+import { defaultLocale } from "../../translations/config"
+
+import Modal from '../../components/Modal'
 
 const params = {
     direction: 'horizontal',
@@ -314,7 +317,9 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                                             required
                                             value={inputs.privacy}
                                         />
-                                        <div className="privacy-wrapper" dangerouslySetInnerHTML={{__html: homepage.acf.etiqueta_privacidad}}></div>
+                                        <div className="privacy-wrapper">
+                                            <span dangerouslySetInnerHTML={{__html: homepage.acf.etiqueta_privacidad}}></span><Modal linkText={t('privacypolicy_title')} title={t('legaltext_title')} content={t('legalnotice')} closetext={t('close')} />*
+                                        </div>
                                     </label>
 
                                     <div className="submit-btn-container">
@@ -360,11 +365,6 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
 
 
-
-
-
-
-
             <Footer />
 
 
@@ -400,6 +400,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
           :global(p) {
             margin-top: 0;
+          }
+
+          :global(a) {
+            cursor: pointer;
           }
 
           section {
@@ -639,6 +643,11 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
           label.privacy-label .privacy-wrapper {
            float: left;
            width: calc(100% - 45px);
+           margin-bottom: 30px;
+          }
+
+          :global(.privacy-wrapper p) {
+            display: inline;
           }
 
           input,

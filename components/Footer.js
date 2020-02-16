@@ -1,12 +1,8 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-grid-system'
 import LocaleSwitcher from '../components/LocaleSwitcher'
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import useTranslation from "../hooks/useTranslation";
+import Modal from "./Modal";
 
 
 
@@ -15,38 +11,6 @@ const Footer = () => {
 
     const { locale, t } = useTranslation()
 
-    const [openPrivacy, setPrivacyOpen] = React.useState(false);
-    const [openLegal, setLegalOpen] = React.useState(false);
-
-    const [scroll, setScroll] = React.useState('paper');
-
-    const handlePrivacyOpen = scrollType => () => {
-        setPrivacyOpen(true);
-        setScroll(scrollType);
-    };
-
-    const handleLegalOpen = scrollType => () => {
-        setLegalOpen(true);
-        setScroll(scrollType);
-    };
-
-    const handleClose = () => {
-        setPrivacyOpen(false);
-        setLegalOpen(false);
-    };
-
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (openPrivacy) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [openPrivacy]);
-
-
-
     return (
         <footer>
             <Container>
@@ -54,10 +18,10 @@ const Footer = () => {
                     <Col md={12}>
                         <ul>
                             <li>
-                                <a onClick={handlePrivacyOpen('paper')}>{t('privacytext_title')}</a>
+                                <Modal linkText={t('privacytext_title')} title={t('privacytext_title')} content={t('cookiepolicy')} closetext={t('close')} />
                             </li>
                             <li>
-                                <a onClick={handleLegalOpen('paper')}>{t('legaltext_title')}</a>
+                                <Modal linkText={t('legaltext_title')} title={t('legaltext_title')} content={t('legalnotice')} closetext={t('close')} />
                             </li>
                         </ul>
                     </Col>
@@ -72,61 +36,6 @@ const Footer = () => {
                 <LocaleSwitcher />
 
             </Container>
-
-
-
-
-            <Dialog
-                open={openPrivacy}
-                onClose={handleClose}
-                scroll={scroll}
-                aria-labelledby="scroll-dialog-title"
-                aria-describedby="scroll-dialog-description"
-                maxWidth={'md'}
-            >
-                <DialogTitle id="scroll-dialog-title">{t('privacytext_title')}</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        Descripción política de privacidad
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <button onClick={handleClose} color="primary">
-                        {t('close')}
-                    </button>
-                </DialogActions>
-            </Dialog>
-
-
-
-            <Dialog
-                open={openLegal}
-                onClose={handleClose}
-                scroll={scroll}
-                aria-labelledby="scroll-dialog-title"
-                aria-describedby="scroll-dialog-description"
-                maxWidth={'md'}
-            >
-                <DialogTitle id="scroll-dialog-title">{t('legaltext_title')}</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <span className="Dialog__inner-content" dangerouslySetInnerHTML={{__html: t('legalnotice')}}></span>
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <button onClick={handleClose} color="primary">
-                        {t('close')}
-                    </button>
-                </DialogActions>
-            </Dialog>
 
 
 
@@ -158,19 +67,18 @@ const Footer = () => {
                         border-right: 0;
                     }
 
-                    a {
+                    :global(footer a) {
                         color: #ffffff;
                         text-decoration: none;
                         font-size: 1rem;
                         font-weight: 400;
                         transition: color 0.3s ease-in-out;
-                        cursor: pointer;
                     }
-                    a:visited {
+                    :global(footer a:visited) {
                         color: #ffffff;
                     }
-                    a:hover,
-                    a.active {
+                    :global(footer a:hover),
+                    :global(footer a.active) {
                         color: #4a90e2;
                     }
                     .Footer__logo {

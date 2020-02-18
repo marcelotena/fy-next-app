@@ -429,7 +429,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
           .excerpt-text {
             font-size: 0.9rem;
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif;
           }
 
           .Home__hero {

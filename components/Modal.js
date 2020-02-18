@@ -32,7 +32,9 @@ class Modal extends Component {
                 scroll={'paper'}
                 maxWidth={'md'}
             >
-                <DialogTitle id="scroll-dialog-title">{this.props.title}</DialogTitle>
+                <DialogTitle id="scroll-dialog-title">
+                    {this.props.title}
+                </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         <span dangerouslySetInnerHTML={{__html: this.props.content}}></span>

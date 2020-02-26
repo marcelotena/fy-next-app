@@ -147,6 +147,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <title>{`Fast and Yours - ${t('homepage')}`}</title>
                 <link rel='icon' href='/favicon.ico' />
                 <link rel='stylesheet' href='/css/swiper.min.css' />
+                <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
             </Head>
 
             <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />

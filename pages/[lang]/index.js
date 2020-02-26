@@ -145,6 +145,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
         <div className="wrapper">
             <Head>
                 <title>{`Fast and Yours - ${t('homepage')}`}</title>
+                <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
                 <link rel='icon' href='/favicon.ico' />
                 <link rel='stylesheet' href='/css/swiper.min.css' />
                 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet" />

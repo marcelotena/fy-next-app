@@ -902,6 +902,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
             .submit-btn-container {
               text-align: center;
             }
+
+            .Home__section-padding {
+                padding: 50px 40px 50px 40px;
+            }
           }
 
         `}</style>

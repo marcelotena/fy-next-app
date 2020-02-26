@@ -156,12 +156,12 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <Container>
 
                     <Row>
-                        <Col md={6}>
+                        <Col md={6} sm={12}>
                             <h1 className='Home__title'>{homepage.title.rendered}</h1>
                             <div className='Home__content' dangerouslySetInnerHTML={{__html: homepage.content.rendered}}></div>
                         </Col>
 
-                        <Col md={6}>
+                        <Col md={6} sm={12}>
                             <div className="Home__featured-image">
                                 <img src={homepagefeaturedimage.media_details.sizes.full.source_url} alt={homepagefeaturedimage.alt_text}/>
                             </div>
@@ -184,10 +184,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                                 <div className="Home__services__service" key={index}>
                                     <Row>
 
-                                        <Col md={4} sm={3}>
+                                        <Col md={4} sm={3} xs={12}>
                                             <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
                                         </Col>
-                                        <Col md={8} sm={9}>
+                                        <Col md={8} sm={9} xs={12}>
                                             <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
                                             <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
                                         </Col>
@@ -278,7 +278,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <Container>
                     <Row>
 
-                        <Col md={6}>
+                        <Col md={6} sm={12}>
 
                             <div className="Home__contact__section-padding">
 
@@ -347,7 +347,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
                         </Col>
 
-                        <Col md={6}>
+                        <Col md={6} sm={12}>
 
                             <div className="Home__contact__section-padding">
 

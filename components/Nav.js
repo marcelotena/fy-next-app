@@ -24,12 +24,12 @@ export default class Nav extends Component {
                 <nav>
                     <Container>
                         <Row>
-                            <Col md={6} sm={4} xs={3}>
+                            <Col md={6} sm={4} xs={2}>
                                 <Link href='/'>
                                     <a><img className='Nav__logo' src={logo} alt=""/></a>
                                 </Link>
                             </Col>
-                            <Col md={6} sm={8} xs={9}>
+                            <Col md={6} sm={8} xs={10}>
                                 <ul>
                                     <ScrollspyNav
                                         scrollTargetIds={['services', 'clients', 'contact']}

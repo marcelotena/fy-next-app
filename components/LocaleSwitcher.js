@@ -1,4 +1,4 @@
-import React, {Fragment} from "react"
+import React from "react"
 import { useRouter } from "next/dist/client/router"
 import { locales, languageNames } from "../translations/config"
 import { LocaleContext } from "../context/LocaleContext"

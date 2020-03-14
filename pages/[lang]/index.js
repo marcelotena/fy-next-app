@@ -4,7 +4,6 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import fetch from 'isomorphic-unfetch'
 import {DOMAIN_URL, WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
-import Link from 'next/link'
 import { Container, Row, Col } from 'react-grid-system'
 import Swiper from 'react-id-swiper'
 
@@ -56,7 +55,7 @@ const params = {
 
 
 
-const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
+const Home = ({ homepage, homepagefeaturedimage }) => {
 
     const { locale, t } = useTranslation()
 
@@ -151,7 +150,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet" />
             </Head>
 
-            <Nav logo={logo.guid.rendered} menu={primarymenu.data.items} />
+            <Nav locale={locale} />
 
             <section className='Home__hero'>
                 <Container>
@@ -185,10 +184,10 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                                 <div className="Home__services__service" key={index}>
                                     <Row>
 
-                                        <Col md={4} sm={3} xs={12}>
+                                        <Col md={4} sm={3}>
                                             <div className="Home__services__icon-container" dangerouslySetInnerHTML={{__html: service.icono}}></div>
                                         </Col>
-                                        <Col md={8} sm={9} xs={12}>
+                                        <Col md={8} sm={9}>
                                             <h2 className="Home__services__service-title">{service.titulo_del_servicio}</h2>
                                             <p className="Home__services__service-content">{service.descripcion_del_servicio}</p>
                                         </Col>
@@ -221,7 +220,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <Container>
 
                     <Row>
-                        <Col md={12}>
+                        <Col sm={12}>
 
                             <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_clientes}</h2>
 
@@ -230,7 +229,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
 
                     <Row>
-                        <Col md={12}>
+                        <Col sm={12}>
 
 
                             <div className="Home__clients__slider">
@@ -265,7 +264,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <Container>
                     <Row>
 
-                        <Col md={12}>
+                        <Col sm={12}>
 
                             <div className="Home__section-padding">
                                 <h2 className="Home__section-title block-center">{homepage.acf.titulo_seccion_contacto}</h2>
@@ -279,7 +278,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
                 <Container>
                     <Row>
 
-                        <Col md={6} sm={12}>
+                        <Col md={6}>
 
                             <div className="Home__contact__section-padding">
 
@@ -348,7 +347,7 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
                         </Col>
 
-                        <Col md={6} sm={12}>
+                        <Col md={6}>
 
                             <div className="Home__contact__section-padding">
 
@@ -916,8 +915,6 @@ const Home = ({ primarymenu, homepage, homepagefeaturedimage, logo }) => {
 
 
 
-
-
 Home.getInitialProps = async (ctx) => {
 
     // Locale
@@ -929,15 +926,6 @@ Home.getInitialProps = async (ctx) => {
         locale = `/${ctx.query.lang}`;
     }
 
-    // Header logo, selected in WordPress/Appearance/Customization
-    const logoResponse = await fetch((`${DOMAIN_URL}${FY_CUSTOM_API}/logo`))
-    const logo = await logoResponse.json()
-
-    // Primary menu, change ID with your primary menu
-    const primarymenuId = 3
-    const primarymenuResponse = await fetch(`${DOMAIN_URL}${locale}${WP_REST_API}/menus/${primarymenuId}`)
-    const primarymenu = await primarymenuResponse.json()
-
     // Get WordPress current page that is set as front-page
     const homepageResponse = await fetch(`${DOMAIN_URL}${locale}${FY_CUSTOM_API}/frontpage`)
     const homepage = await homepageResponse.json()
@@ -946,7 +934,7 @@ Home.getInitialProps = async (ctx) => {
     const homepagefeaturedimageResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/media/${homepage["featured_media"]}`)
     const homepagefeaturedimage = await homepagefeaturedimageResponse.json()
 
-    return { logo, primarymenu, homepage, homepagefeaturedimage }
+    return { homepage, homepagefeaturedimage }
 }
 
 export default withLocale(Home)

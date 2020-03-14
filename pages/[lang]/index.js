@@ -55,7 +55,7 @@ const params = {
 
 
 
-const Home = ({ homepage, homepagefeaturedimage }) => {
+const Home = ({ homepage }) => {
 
     const { locale, t } = useTranslation()
 
@@ -163,7 +163,7 @@ const Home = ({ homepage, homepagefeaturedimage }) => {
 
                         <Col md={6} sm={12}>
                             <div className="Home__featured-image">
-                                <img src={homepagefeaturedimage.media_details.sizes.full.source_url} alt={homepagefeaturedimage.alt_text}/>
+                                <img src={ homepage.better_featured_image.source_url } alt={homepage.better_featured_image.alt_text}/>
                             </div>
                         </Col>
                     </Row>
@@ -930,11 +930,7 @@ Home.getInitialProps = async (ctx) => {
     const homepageResponse = await fetch(`${DOMAIN_URL}${locale}${FY_CUSTOM_API}/frontpage`)
     const homepage = await homepageResponse.json()
 
-    // Fetch Homepage featured image when we have its ID
-    const homepagefeaturedimageResponse = await fetch(`${DOMAIN_URL}${WP_REST_API}/media/${homepage["featured_media"]}`)
-    const homepagefeaturedimage = await homepagefeaturedimageResponse.json()
-
-    return { homepage, homepagefeaturedimage }
+    return { homepage }
 }
 
 export default withLocale(Home)

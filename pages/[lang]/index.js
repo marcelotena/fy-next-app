@@ -1,9 +1,9 @@
-import React, {useContext, useState} from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import fetch from 'isomorphic-unfetch'
-import {DOMAIN_URL, WP_REST_API, FY_CUSTOM_API} from "../../utils/constants"
+import {DOMAIN_URL, FY_CUSTOM_API} from "../../utils/constants"
 import { Container, Row, Col } from 'react-grid-system'
 import Swiper from 'react-id-swiper'
 
@@ -12,6 +12,7 @@ import useTranslation from '../../hooks/useTranslation'
 import { defaultLocale } from "../../translations/config"
 
 import Modal from '../../components/Modal'
+import {LocaleContext} from "../../context/LocaleContext";
 
 const params = {
     direction: 'horizontal',

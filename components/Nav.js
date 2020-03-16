@@ -41,7 +41,8 @@ export default class Nav extends Component {
         super(props);
         this.state = {
             logo : {},
-            primarymenu : []
+            primarymenu : [],
+            locale: ''
         };
     }
 
@@ -55,7 +56,8 @@ export default class Nav extends Component {
 
             this.setState({
                 logo: logo,
-                primarymenu : primarymenu.data.items
+                primarymenu : primarymenu.data.items,
+                locale: this.props.locale
             })
 
         }).catch( failure => {
@@ -70,24 +72,27 @@ export default class Nav extends Component {
 
     componentDidUpdate() {
 
-        /*Promise.all([
-            getLogo(),
-            getMenu(this.props.locale)
-        ]).then( results => {
-            const [logo, primarymenu] = results
+        if (this.props.locale !== this.state.locale) {
 
-            this.setState({
-                logo: logo,
-                primarymenu : primarymenu.data.items
+            Promise.all([
+                getMenu(this.props.locale)
+            ]).then( results => {
+                const [primarymenu] = results
+
+                this.setState({
+                    primarymenu : primarymenu.data.items,
+                    locale : this.props.locale
+                })
+
+            }).catch( failure => {
+                const errorState = {
+                    failure,
+                    failed : true
+                }
+                this.setState(errorState)
             })
 
-        }).catch( failure => {
-            const errorState = {
-                failure,
-                failed : true
-            }
-            this.setState(errorState)
-        })*/
+        }
 
     }
 

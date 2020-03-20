@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import Link from 'next/link'
 import Headroom from 'react-headroom'
-import { Container, Row, Col } from 'react-grid-system'
 import ScrollspyNav from 'react-scrollspy-nav'
 import fetch from "isomorphic-unfetch";
 import {DOMAIN_URL, FY_CUSTOM_API, WP_REST_API} from "../utils/constants";
@@ -111,14 +110,16 @@ export default class Nav extends Component {
                 }}
             >
                 <nav>
-                    <Container>
-                        <Row>
-                            <Col md={6} sm={4} xs={3}>
+                    <div className="container">
+                        <div className="row">
+
+                            <div className="col-md-6 col-sm-4 col-xs-3">
                                 <Link href='/'>
                                     <a><img className='Nav__logo' src={this.state.logo.source_url} alt=""/></a>
                                 </Link>
-                            </Col>
-                            <Col md={6} sm={8} xs={9}>
+                            </div>
+
+                            <div className="col-md-6 col-sm-8 col-xs-9">
                                 <ul>
                                     <ScrollspyNav
                                         scrollTargetIds={['services', 'clients', 'contact']}
@@ -132,9 +133,9 @@ export default class Nav extends Component {
                                     ))}
                                     </ScrollspyNav>
                                 </ul>
-                            </Col>
-                        </Row>
-                    </Container>
+                            </div>
+                        </div>
+                    </div>
 
                     { /*language=CSS*/ }
                     <style jsx>{`

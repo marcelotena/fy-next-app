@@ -870,7 +870,7 @@ const Home = ({ homepage }) => {
                     .Home__featured-image img {
                         position: relative;
                         right: 0;
-                        margin-bottom: -100px;
+                        margin-bottom: -75px;
                         width: 100%;
                         max-width: 450px;
                     }

@@ -615,6 +615,14 @@ const Home = ({ homepage }) => {
                     padding-bottom: 70px;
                 }
 
+                .Home__contact .Home__section-padding:nth-child(2) {
+                    padding-top: 0;
+                }
+
+                .Home__contact .Home__section-title {
+                    margin-bottom: 0;
+                }
+
                 /* Form styles */
                 form {
                     float: left;

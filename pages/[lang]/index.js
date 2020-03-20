@@ -455,9 +455,9 @@ const Home = ({ homepage }) => {
                 }
 
                 .Home__featured-image img {
-                    padding-top: 50px;
+                    padding-top: 0;
                     margin-right: -70px;
-                    margin-bottom: -100px;
+                    margin-bottom: -30px;
                 }
 
                 .Home__services__left-column,
@@ -876,11 +876,11 @@ const Home = ({ homepage }) => {
 
 
                     .Home__featured-image img {
-                        position: relative;
-                        right: 0;
                         margin-bottom: -75px;
                         width: 100%;
                         max-width: 450px;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
 
                     .Home__services__service {

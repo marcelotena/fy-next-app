@@ -237,7 +237,7 @@ export default class Nav extends Component {
                   @media (max-width: 380px) {
 
                       a {
-                        font-size: 0.60rem;
+                        font-size: 0.75rem;
                       }
 
                       li {
@@ -253,7 +253,7 @@ export default class Nav extends Component {
                       }
 
                       a {
-                        font-size: 0.55rem;
+                        font-size: 0.65rem;
                       }
 
                       li {

@@ -5,7 +5,7 @@ import { LocaleContext } from "../context/LocaleContext"
 import FormControl from "@material-ui/core/FormControl"
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
 
 const LocaleSwitcher = () => {
     const router = useRouter()
@@ -21,18 +21,10 @@ const LocaleSwitcher = () => {
         [router]
     )
 
-    const theme = createMuiTheme({
-        palette: {
-            primary: { main: '#4a90e2' }
-        },
-        typography: {
-            fontFamily: 'Montserrat'
-        }
-    });
 
     return (
-        <ThemeProvider theme={theme}>
-            <FormControl variant="outlined">
+        <div>
+            <FormControl variant="filled">
 
                     <Select
                         value={locale}
@@ -64,7 +56,7 @@ const LocaleSwitcher = () => {
                     }
                 `}</style>
             </FormControl>
-        </ThemeProvider>
+        </div>
 
     )
 }

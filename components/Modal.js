@@ -29,7 +29,6 @@ class Modal extends Component {
             <Dialog
                 open={open}
                 onClose={this.handleToggle}
-                scroll={'paper'}
                 maxWidth={'md'}
             >
                 <DialogTitle id="scroll-dialog-title">

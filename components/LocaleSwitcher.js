@@ -11,8 +11,6 @@ function localeProcess(optionsSelect, locales) {
         optionsSelect.push({ value: locale, label: languageNames[locale]})
     ));
 
-    console.log(optionsSelect);
-
     return optionsSelect;
 }
 

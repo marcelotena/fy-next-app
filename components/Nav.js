@@ -40,7 +40,11 @@ export default class Nav extends Component {
         super(props);
         this.state = {
             logo : {},
-            primarymenu : [],
+            primarymenu : [
+                { id: 139, url: '#services', title: 'Servicios' },
+                { id: 138, url: '#clients', title: 'Clientes' },
+                { id: 71, url: '#contact', title: 'Contacto' }
+            ],
             locale: ''
         };
     }

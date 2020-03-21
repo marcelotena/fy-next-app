@@ -17,6 +17,7 @@
     "react-headroom": "^3.0.0",
     "react-id-swiper": "^2.4.0",
     "react-scrollspy-nav": "^1.2.2",
+    "react-select": "^3.0.8",
     "swiper": "^5.3.1"
   },
   "devDependencies": {

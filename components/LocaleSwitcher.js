@@ -2,9 +2,23 @@ import React from "react"
 import { useRouter } from "next/dist/client/router"
 import { locales, languageNames } from "../translations/config"
 import { LocaleContext } from "../context/LocaleContext"
-import FormControl from "@material-ui/core/FormControl"
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
+import Select from 'react-select'
+
+
+function localeProcess(optionsSelect, locales) {
+
+    locales.map(locale => (
+        optionsSelect.push({ value: locale, label: languageNames[locale]})
+    ));
+
+    console.log(optionsSelect);
+
+    return optionsSelect;
+}
+
+function defaultValueSelect(locale) {
+    return {value: locale, label: languageNames[locale]}
+}
 
 
 const LocaleSwitcher = () => {
@@ -15,47 +29,55 @@ const LocaleSwitcher = () => {
             const regex = new RegExp(`^/(${locales.join("|")})`)
             router.push(
                 router.pathname,
-                router.asPath.replace(regex, `/${e.target.value}`)
+                router.asPath.replace(regex, `/${e.value}`)
             )
         },
         [router]
     )
 
+    let optionsSelect = [];
+
+
+    const customStyles = {
+        control: styles => ({
+            ...styles,
+            backgroundColor: 'white',
+        }),
+        option: (styles) => ({
+            ...styles,
+        }),
+        input: styles => ({ ...styles }),
+        placeholder: styles => ({ ...styles }),
+        singleValue: (styles) => ({
+            ...styles,
+        }),
+    };
+
 
     return (
         <div>
-            <FormControl variant="filled">
-
-                    <Select
-                        value={locale}
-                        onChange={handleLocaleChange}
-                    >
-                        {locales.map(locale => (
-                            <MenuItem key={locale} value={locale}>
-                                {languageNames[locale]}
-                            </MenuItem>
-                        ))}
-                    </Select>
+            <div className="Form__control">
+                <Select
+                    defaultValue={defaultValueSelect(locale)}
+                    styles={customStyles}
+                    onChange={handleLocaleChange}
+                    options={localeProcess(optionsSelect, locales)}
+                />
+            </div>
 
 
 
-                { /* language=CSS */ }
-                <style jsx>{`
-                    :global(.MuiOutlinedInput-input) {
-                        background-color: white;
-                        padding: 12px 14px;
-                    }
 
-                    :global(.MuiSelect-select:focus) {
-                        background-color: #f8f8f8;
-                        border-radius: 5px;
-                    }
 
-                    :global(.Mui-focused .MuiOutlinedInput-input) {
-                        border-color: transparent;
-                    }
-                `}</style>
-            </FormControl>
+            { /* language=CSS */ }
+            <style jsx>{`
+                .Form__control {
+                    max-width: 120px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            `}</style>
+
         </div>
 
     )

@@ -48,7 +48,7 @@ const Footer = () => {
 
                         text-align: center;
                         padding-top: 30px;
-                        padding-bottom: 50px;
+                        padding-bottom: 100px;
                     }
 
                     ul {

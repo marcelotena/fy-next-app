@@ -143,7 +143,12 @@ const Home = ({ homepage }) => {
             <Head>
                 <title>{`Fast and Yours - ${t('homepage')}`}</title>
                 <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+
+                <link rel="icon" href="/favicon/favicon.ico" />
+                <link rel="icon" type="image/png" href="/favicon/speeddial-160px.png" />
+                <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png">
+                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png">
+                <link rel="apple-touch-icon-precomposed" href="/favicon/apple-touch-icon-57x57.png">
 
                 <link rel="preload" as="style" href="/css/swiper.min.css" />
                 <link rel="preload" as="style" href="/css/bootstrap.min.css" />

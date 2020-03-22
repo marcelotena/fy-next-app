@@ -1,6 +1,6 @@
 const strings = {
     en: {
-        homepage: "Web development specialized in WordPress",
+        homepage: "Web development agency specialized in WordPress.",
         name_tag: "Name*",
         email_tag: "E-mail*",
         message_tag: "Message*",
@@ -151,7 +151,7 @@ const strings = {
         `
     },
     es: {
-        homepage: "Desarrollo web especializado en WordPress",
+        homepage: "Agencia de desarrollo web especializada en WordPress",
         name_tag: "Nombre*",
         email_tag: "E-mail*",
         message_tag: "Mensaje*",

@@ -30,6 +30,7 @@ class Modal extends Component {
                 open={open}
                 onClose={this.handleToggle}
                 maxWidth={'md'}
+                scroll={'body'}
             >
                 <DialogTitle id="scroll-dialog-title">
                     {this.props.title}
@@ -49,11 +50,11 @@ class Modal extends Component {
             { /* language=CSS */ }
             <style jsx>{`
                 :global(.MuiButton-containedPrimary) {
-                    background-color: #4a90e2;
+                    background-color: #4a90e2!important;
                 }
 
                 :global(.MuiButton-containedPrimary:hover) {
-                    background-color: rgba(0, 118, 255, 0.8);
+                    background-color: rgba(0, 118, 255, 0.8)!important;
                 }
 
                 :global(.MuiDialogTitle-root) {

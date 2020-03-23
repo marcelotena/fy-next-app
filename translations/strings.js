@@ -148,7 +148,11 @@ const strings = {
             
             <h2>Actualización de nuestra Política de Cookies</h2>
             <p>Es posible que actualicemos la Política de Cookies de nuestro Sitio Web, por ello le recomendamos revisar esta política cada vez que acceda a nuestro Sitio Web con el objetivo de estar adecuadamente informado sobre cómo y para qué usamos las cookies. La Política de Cookies se actualizó por última vez a fecha [27 de noviembre de 2014].</p>
-        `
+        `,
+        cookiebannermsg: "<span>We use our own and third-party cookies to improve our services and show you advertising related to your preferences by analysing your browsing habits. <br/><br/> You can change the settings or </span>",
+        cookiebannermoreinfo: "get more information here",
+        cookiebanneraccept: "I agree",
+        cookiebannerdecline: "I decline"
     },
     es: {
         homepage: "Agencia de desarrollo web especializada en WordPress",
@@ -299,7 +303,11 @@ const strings = {
             
             <h2>Actualización de nuestra Política de Cookies</h2>
             <p>Es posible que actualicemos la Política de Cookies de nuestro Sitio Web, por ello le recomendamos revisar esta política cada vez que acceda a nuestro Sitio Web con el objetivo de estar adecuadamente informado sobre cómo y para qué usamos las cookies. La Política de Cookies se actualizó por última vez a fecha [27 de noviembre de 2014].</p>
-        `
+        `,
+        cookiebannermsg: "<span>Usamos cookies propias y de terceros para mejorar nuestros servicios y mostrarte anuncios relacionados con tus preferencias en base a tus hábitos de navegación. <br/><br/> Puedes cambiar la configuración u </span>",
+        cookiebannermoreinfo: "obtener más información aquí",
+        cookiebanneraccept: "Acepto",
+        cookiebannerdecline: "No acepto"
     }
 }
 

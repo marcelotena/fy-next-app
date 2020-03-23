@@ -1,7 +1,12 @@
 import React from 'react'
 import LocaleSwitcher from '../components/LocaleSwitcher'
-import useTranslation from "../hooks/useTranslation";
-import Modal from "./Modal";
+import useTranslation from "../hooks/useTranslation"
+import Modal from "./Modal"
+
+import { GApageView, initGA } from "../pages/index"
+import Cookies from 'js-cookie'
+
+import CookieConsent from 'react-cookie-consent'
 
 
 
@@ -9,6 +14,16 @@ import Modal from "./Modal";
 const Footer = () => {
 
     const { locale, t } = useTranslation()
+
+    let cookieConsentValue = Cookies.get('CookieConsent')
+
+    if( cookieConsentValue ) {
+        // Cookie consent is true, record pageView
+        GApageView(window.location.pathname + window.location.search);
+
+    } else {
+        // CookieConsent not defined or false
+    }
 
     return (
         <footer>
@@ -34,6 +49,49 @@ const Footer = () => {
 
                 <LocaleSwitcher />
 
+                <CookieConsent
+                    onAccept={() => {
+                        if (!window.ga) {
+                            initGA()
+                        }
+
+                        GApageView(window.location.pathname + window.location.search);
+                    }}
+                    enableDeclineButton
+                    location="bottom"
+                    contentStyle={{
+                        textAlign: 'left',
+                        fontSize: '1rem'
+                    }}
+                    buttonText={t('cookiebanneraccept')}
+                    declineButtonText={t('cookiebannerdecline')}
+                    declineButtonStyle={{
+                        color: '#ffffff',
+                        backgroundColor: 'transparent',
+                        border: '1px solid #ffffff',
+                        fontSize: '0.9rem',
+                        padding: '6px 30px',
+                        textTransform: 'uppercase',
+                        fontWeight: '700'
+                    }}
+                    buttonStyle={{
+                        color: 'rgb(53, 53, 53)',
+                        backgroundColor: '#ffffff',
+                        border: '1px solid #ffffff',
+                        fontSize: '0.9rem',
+                        padding: '6px 30px',
+                        textTransform: 'uppercase',
+                        fontWeight: '700'
+                    }}
+                    style={{
+                        boxShadow: '3px -3px 10px rgba(0,0,0,0.3)',
+                        background: 'rgba(0, 0, 0, 0.9)',
+                        paddingBottom: '10px'
+                    }}
+                >
+                    <span dangerouslySetInnerHTML={{ __html: t('cookiebannermsg') }}></span><Modal linkText={t('cookiebannermoreinfo')} title={t('privacytext_title')} content={t('cookiepolicy')} closetext={t('close')} />.
+                </CookieConsent>
+
             </div>
 
 
@@ -48,7 +106,7 @@ const Footer = () => {
 
                         text-align: center;
                         padding-top: 30px;
-                        padding-bottom: 100px;
+                        padding-bottom: 130px;
                     }
 
                     ul {
@@ -70,7 +128,7 @@ const Footer = () => {
                         color: #ffffff;
                         text-decoration: none;
                         font-size: 1rem;
-                        font-weight: 400;
+                        font-weight: 600;
                         transition: color 0.3s ease-in-out;
                     }
                     :global(footer a:visited) {

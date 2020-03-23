@@ -3,11 +3,9 @@ import Head from 'next/head'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import fetch from 'isomorphic-unfetch'
-import {DOMAIN_URL, FY_CUSTOM_API} from "../../utils/constants"
+import { DOMAIN_URL, FY_CUSTOM_API } from "../../utils/constants"
 import Swiper from 'react-id-swiper'
 import Modal from '../../components/Modal'
-
-import {GApageView, initGA} from "../index";
 
 import withLocale from '../../hocs/withLocale'
 import useTranslation from '../../hooks/useTranslation'
@@ -54,16 +52,6 @@ const params = {
 
 
 const Home = ({ homepage }) => {
-
-    React.useEffect(() => {
-
-        if (!window.ga) {
-            initGA()
-        }
-
-        GApageView(window.location.pathname + window.location.search);
-
-    })
 
     const { locale, t } = useTranslation()
 

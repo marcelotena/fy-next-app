@@ -13,6 +13,8 @@ import Contact from '../../components/home/Contact'
 import withLocale from '../../hocs/withLocale'
 import useTranslation from '../../hooks/useTranslation'
 import { defaultLocale } from "../../translations/config"
+import Cookies from "js-cookie";
+import {GApageView, initGA} from "../index";
 
 
 
@@ -169,6 +171,20 @@ Home.getInitialProps = async (ctx) => {
         locale = '';
     } else {
         locale = `/${ctx.query.lang}`;
+    }
+
+    let cookieConsentValue = Cookies.get('CookieConsent')
+
+    if( cookieConsentValue ) {
+      // Cookie consent is true, record pageView
+      if (!window.ga) {
+        initGA()
+      }
+
+      GApageView(window.location.pathname + window.location.search);
+
+    } else {
+      // CookieConsent not defined or false
     }
 
     // Get WordPress current page that is set as front-page

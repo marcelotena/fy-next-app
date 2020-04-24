@@ -15,16 +15,6 @@ const Footer = () => {
 
     const { locale, t } = useTranslation()
 
-    let cookieConsentValue = Cookies.get('CookieConsent')
-
-    if( cookieConsentValue ) {
-        // Cookie consent is true, record pageView
-        GApageView(window.location.pathname + window.location.search);
-
-    } else {
-        // CookieConsent not defined or false
-    }
-
     return (
         <footer>
             <div className="container">

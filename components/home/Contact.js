@@ -186,54 +186,6 @@ const Contact = ({ homepage }) => {
 
         { /*language=CSS*/ }
         <style jsx>{`            
-                section {
-                    float: left;
-                    width: 100%;
-                }
-
-                .Home__section-padding {
-                    padding: 50px 70px 50px 70px;
-                }
-
-                .Home__section-title {
-                    color: #4a4a4a;
-                    font-size: 2rem; /* 32px */
-                    font-weight: 700;
-                    line-height: 1.3;
-
-                    padding-bottom: 40px;
-                    margin-bottom: 30px;
-
-                    position: relative;
-                }
-
-                .Home__section-title.block-center {
-                    text-align: center;
-                }
-
-                .Home__section-title::after {
-                    background: #4a90e2;
-                    display: block;
-                    content: '';
-                    width: 130px;
-                    height: 4px;
-
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                }
-
-                .Home__section-title.block-center::after {
-                    left: calc(50% - 65px);
-                }
-
-                .Home__section-content {
-                    color: #4a4a4a;
-                    font-size: 1rem; /* 16px */
-                    font-weight: 400;
-                    line-height: 1.6;
-                }
-                
                 .Home__contact {
                     padding-bottom: 70px;
                 }
@@ -423,10 +375,6 @@ const Contact = ({ homepage }) => {
 
                     .submit-btn-container {
                         text-align: center;
-                    }
-
-                    .Home__section-padding {
-                        padding: 50px 40px 50px 40px;
                     }
                 }
 

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/Clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/Clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/Contact.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/[lang]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,36 +16,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>item.</find>
-      <find>response</find>
-      <find>swiper-wrapper</find>
-      <find>node</find>
-      <find>webpack</find>
-      <find>bg-light</find>
-      <find>type</find>
-      <find>LocaleContext</find>
-      <find>Home__clients__slider-item</find>
-      <find>useEffec</find>
-      <find>success</find>
-      <find>wrao</find>
-      <find>font-family</find>
-      <find>sm&gt;</find>
-      <find>classList</find>
-      <find>featured-image</find>
-      <find>Nav__logo</find>
-      <find>fill</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>post.</replace>
-      <replace>Response</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/.next</dir>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -118,7 +90,8 @@
       <workItem from="1584721167431" duration="66000" />
       <workItem from="1584726500925" duration="26017000" />
       <workItem from="1584972359004" duration="979000" />
-      <workItem from="1587656725237" duration="4967000" />
+      <workItem from="1587656725237" duration="5837000" />
+      <workItem from="1587740923276" duration="866000" />
     </task>
     <servers />
   </component>
@@ -135,6 +108,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-2239" y="-269" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587741164705">
+      <screen x="-2560" y="-617" width="2560" height="1417" />
+    </state>
+    <state x="-2239" y="-269" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1587741164705" />
     <state width="1140" height="294" key="GridCell.Tab.0.bottom" timestamp="1587658552293">
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>

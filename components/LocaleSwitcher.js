@@ -56,6 +56,7 @@ const LocaleSwitcher = () => {
         <div>
             <div className="Form__control">
                 <Select
+                    id="lang-select"
                     defaultValue={defaultValueSelect(locale)}
                     styles={customStyles}
                     onChange={handleLocaleChange}

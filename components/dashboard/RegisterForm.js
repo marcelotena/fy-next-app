@@ -32,7 +32,7 @@ const RegisterForm = ({ setAlert }) => {
     e.preventDefault();
 
     if(password !== password2) {
-      setAlert('Passwords do not match', 'danger')
+      setAlert('Passwords do not match', 'error');
     } else {
       console.log('SUCCESS');
     }

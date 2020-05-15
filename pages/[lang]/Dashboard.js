@@ -6,7 +6,7 @@ import withLocale from '../../hocs/withLocale'
 import Footer from "../../components/Footer";
 import RegisterForm from "../../components/dashboard/RegisterForm";
 import LoginForm from "../../components/dashboard/LoginForm";
-import Alert from '../../components/Alert';
+import AlertGroup from '../../components/AlertGroup';
 // Redux
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -21,11 +21,11 @@ const Dashboard = () => {
 
           <PageHeader />
 
-          <Alert />
-
           <Nav locale={locale} isAdmin={true} />
 
           <div className="dashboard-content">
+
+            <AlertGroup />
 
             <div className="container">
               <div className="row">

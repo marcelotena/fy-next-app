@@ -11,16 +11,16 @@ export const setAlert = (msg, alertType) => dispatch => {
   });
 };
 
-export const collapseAlert = (id) => dispatch => {
+export const removeAlert = (id, collapseSpeed) => dispatch => {
+
   dispatch({
     type: COLLAPSE_ALERT,
     payload: id
   });
-};
 
-export const removeAlert = (id) => dispatch => {
-  dispatch({
-    type: REMOVE_ALERT,
-    payload: id
-  });
+  setTimeout(() => dispatch({
+              type: REMOVE_ALERT,
+              payload: id
+            }), collapseSpeed);
+
 };

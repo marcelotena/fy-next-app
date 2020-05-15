@@ -7,7 +7,7 @@ import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
-import {collapseAlert, removeAlert} from "../actions/alert";
+import {removeAlert} from "../actions/alert";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,14 +20,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const AlertGroup = ({ alerts, removeAlert, collapseAlert }) => {
+const AlertGroup = ({ alerts, removeAlert }) => {
   const classes = useStyles();
   const collapseSpeed = 400;
-
-  const collapseAndRemove = id => {
-    collapseAlert(id);
-    setTimeout(() => removeAlert(id), collapseSpeed);
-  };
 
   return (
       <div className={classes.root}>
@@ -43,7 +38,7 @@ const AlertGroup = ({ alerts, removeAlert, collapseAlert }) => {
                         aria-label="close"
                         color="inherit"
                         size="small"
-                        onClick={() => collapseAndRemove(alert.id)}
+                        onClick={() => removeAlert(alert.id, collapseSpeed)}
                     >
                       <CloseIcon fontSize="inherit" />
                     </IconButton>
@@ -66,4 +61,4 @@ const mapStateToProps = state => ({
   alerts: state.alert
 });
 
-export default connect(mapStateToProps, { removeAlert, collapseAlert })(AlertGroup);
+export default connect(mapStateToProps, { removeAlert })(AlertGroup);

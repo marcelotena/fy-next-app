@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
 import useTranslation from "../../hooks/useTranslation";
@@ -10,9 +10,22 @@ import AlertGroup from '../../components/AlertGroup';
 // Redux
 import { Provider } from 'react-redux';
 import store from '../store';
+import setAuthToken from "../../utils/setAuthToken";
+import { loadUser } from '../../actions/auth';
+
+
+if (typeof window !== 'undefined') {
+  if(localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+}
 
 const Dashboard = () => {
   const { locale, t } = useTranslation();
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
   return (
       <div className="wrapper" style={{ backgroundColor: '#f5f8fd' }}>

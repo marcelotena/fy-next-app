@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RegisterForm = ({ setAlert }) => {
+const RegisterForm = ({ setAlert, register }) => {
   const classes = useStyles();
   const [ formData, setFormData ] = useState({
     name: '',
@@ -34,7 +35,7 @@ const RegisterForm = ({ setAlert }) => {
     if(password !== password2) {
       setAlert('Passwords do not match', 'error');
     } else {
-      console.log('SUCCESS');
+      register({ name, email, password });
     }
   };
 
@@ -112,7 +113,8 @@ const RegisterForm = ({ setAlert }) => {
 };
 
 RegisterForm.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
-export default connect(null, { setAlert })(RegisterForm);
+export default connect(null, { setAlert, register })(RegisterForm);

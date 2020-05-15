@@ -1,6 +1,6 @@
 import { SET_ALERT, REMOVE_ALERT, COLLAPSE_ALERT } from '../actions/types';
 
-// @desc  Alerts will be in State as objects with: id, msg and alertType
+// @desc  Alerts will be in State as objects with: id, msg, active and alertType
 const initialState = [];
 
 export default function(state = initialState, action) {

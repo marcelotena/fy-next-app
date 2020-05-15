@@ -4,7 +4,6 @@ import { getInitialLocale } from "../translations/getInitialLocale";
 import { useRouter } from "next/router";
 import * as ReactGA from "react-ga";
 
-
 export const initGA = () => {
     const trackingId = "UA-51551048-1";
 

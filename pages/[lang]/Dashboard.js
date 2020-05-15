@@ -1,37 +1,51 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-
-import reducers from '../../reducers';
 import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
 import useTranslation from "../../hooks/useTranslation";
 import withLocale from '../../hocs/withLocale'
 import Footer from "../../components/Footer";
-import InvoiceList from "../../components/dashboard/InvoiceList";
+import RegisterForm from "../../components/dashboard/RegisterForm";
+import LoginForm from "../../components/dashboard/LoginForm";
+import Alert from '../../components/Alert';
+// Redux
+import { Provider } from 'react-redux';
+import store from '../store';
 
 const Dashboard = () => {
   const { locale, t } = useTranslation();
-  const store = createStore(reducers, applyMiddleware(thunk));
 
   return (
       <div className="wrapper" style={{ backgroundColor: '#f5f8fd' }}>
 
-        <PageHeader />
-
-        <Nav locale={locale} isAdmin={true} />
-
         <Provider store={store}>
 
+          <PageHeader />
+
+          <Alert />
+
+          <Nav locale={locale} isAdmin={true} />
+
           <div className="dashboard-content">
-            <InvoiceList />
+
+            <div className="container">
+              <div className="row">
+
+                <div className="col-md-6">
+                  <RegisterForm />
+                </div>
+
+                <div className="col-md-6">
+                  <LoginForm />
+                </div>
+
+              </div>
+            </div>
+
           </div>
 
+          <Footer />
+
         </Provider>
-
-
-        <Footer />
 
         { /*language=CSS*/ }
         <style jsx>{`            

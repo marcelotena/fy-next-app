@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LocaleSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LocaleSwitcher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/[lang]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[lang]/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +108,7 @@
       <workItem from="1587656725237" duration="5837000" />
       <workItem from="1587740923276" duration="2544000" />
       <workItem from="1588776146942" duration="19553000" />
+      <workItem from="1589474089920" duration="9862000" />
     </task>
     <servers />
   </component>
@@ -147,9 +149,9 @@
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>
     <state x="-2303" y="-322" width="667" height="486" key="find.popup/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1587744196026" />
-    <state x="-2254" y="-377" width="670" height="676" key="search.everywhere.popup" timestamp="1588846684368">
+    <state x="-2254" y="-377" width="670" height="676" key="search.everywhere.popup" timestamp="1589480338778">
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>
-    <state x="-2254" y="-377" width="670" height="676" key="search.everywhere.popup/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1588846684368" />
+    <state x="-2254" y="-377" width="670" height="676" key="search.everywhere.popup/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1589480338778" />
   </component>
 </project>

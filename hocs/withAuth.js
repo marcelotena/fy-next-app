@@ -4,6 +4,7 @@ import Router from "next/router";
 import { connect } from 'react-redux';
 import { compose } from "redux";
 import useTranslation from '../hooks/useTranslation'
+import {getDisplayName} from "next/dist/next-server/lib/utils";
 
 const withAuth = Component => ({ isAuthenticated, loading, ...rest }) => {
   const { locale } = useTranslation();
@@ -14,8 +15,10 @@ const withAuth = Component => ({ isAuthenticated, loading, ...rest }) => {
     }
   }, [isAuthenticated, loading]);
 
+  withAuth.displayname = `withAuth(${getDisplayName(Component)})`;
+
   if(!isAuthenticated) {
-    return <div>Not logged in...</div>
+    return null;
   } else {
     return <Component {...rest} />;
   }

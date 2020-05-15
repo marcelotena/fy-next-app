@@ -1,14 +1,16 @@
-import { Component, Fragment } from 'react'
-import Link from 'next/link'
-import Headroom from 'react-headroom'
-import ScrollspyNav from 'react-scrollspy-nav'
+import React, { Component, Fragment } from 'react';
+import Link from 'next/link';
+import Headroom from 'react-headroom';
+import ScrollspyNav from 'react-scrollspy-nav';
 import fetch from "isomorphic-unfetch";
 import {DOMAIN_URL, FY_CUSTOM_API, WP_REST_API} from "../utils/constants";
-import { defaultLocale } from "../translations/config"
+import { defaultLocale } from "../translations/config";
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 // Redux
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { logout } from '../actions/auth';
+import Button from "@material-ui/core/Button";
 
 
 const processResponse = res => {
@@ -103,30 +105,40 @@ class Nav extends Component {
 
 
   render() {
-
     const { isHome, auth: { isAuthenticated, loading }, logout } = this.props;
     const { primarymenu } = this.state;
 
     const authLinks = (
-        <li className="Nav__item">
-          <a onClick={logout} href="#!">Logout</a>
-        </li>
+        <ul className="Nav__list Nav__list-small">
+          <li className="Nav__item Nav__item-small">
+            <Button
+                color="primary"
+                startIcon={<ExitToAppOutlinedIcon />}
+                onClick={logout}
+                style={{ marginTop: 0, marginBottom: 0 }}
+            >
+              Logout
+            </Button>
+          </li>
+        </ul>
     );
 
     const guestLinks = () => {
       if (isHome) {
         return (
-            <ScrollspyNav
-                scrollTargetIds={['services', 'clients', 'contact']}
-                activeNavClass='active'
-                scrollDuration='500'
-            >
-              {primarymenu.map(({ id, url, title }) => (
-                  <li className="Nav__item" key={id}>
-                    <a className="Nav__link" href={url}>{title}</a>
-                  </li>
-              ))}
-            </ScrollspyNav>
+            <ul className="Nav__list">
+              <ScrollspyNav
+                  scrollTargetIds={['services', 'clients', 'contact']}
+                  activeNavClass='active'
+                  scrollDuration='500'
+              >
+                {primarymenu.map(({ id, url, title }) => (
+                    <li className="Nav__item" key={id}>
+                      <a className="Nav__link" href={url}>{title}</a>
+                    </li>
+                ))}
+              </ScrollspyNav>
+            </ul>
         );
       } else {
         return null;
@@ -157,9 +169,7 @@ class Nav extends Component {
                 </div>
 
                 <div className="col-md-6 col-sm-8 col-xs-9">
-                  <ul>
-                    { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks() }</Fragment>)}
-                  </ul>
+                  { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks() }</Fragment>)}
                 </div>
               </div>
             </div>
@@ -194,9 +204,14 @@ class Nav extends Component {
                     padding-bottom: 91px;
                   }
 
-                  ul {
+                  :global(.Nav__list) {
                     float: right;
                     padding-left: 0;
+                  }
+                  
+                  :global(.Nav__list-small) {
+                    margin-top: 13px;
+                    margin-bottom: 0;
                   }
                   
                   :global(.Nav__item) {
@@ -204,6 +219,10 @@ class Nav extends Component {
                     list-style: none;
                     float: left;
                     border-right: 1px solid #979797;
+                  }
+                  
+                  :global(.Nav__item-small) {
+                    padding: 0;
                   }
                   
                   :global(.Nav__item:last-child) {

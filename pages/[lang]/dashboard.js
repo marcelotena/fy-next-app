@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react';
-import PageHeader from "../../components/PageHeader";
-import Nav from "../../components/Nav";
+import React, {useEffect} from 'react';
 import useTranslation from "../../hooks/useTranslation";
 import withLocale from '../../hocs/withLocale'
+import store from "../store";
+import {loadUser} from "../../actions/auth";
+import {Provider} from "react-redux";
+import PageHeader from "../../components/PageHeader";
+import Nav from "../../components/Nav";
+import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
-import RegisterForm from "../../components/dashboard/RegisterForm";
-import LoginForm from "../../components/dashboard/LoginForm";
-import AlertGroup from '../../components/AlertGroup';
-// Redux
-import { Provider } from 'react-redux';
-import store from '../store';
-import setAuthToken from "../../utils/setAuthToken";
-import { loadUser } from '../../actions/auth';
+import InvoiceList from "../../components/dashboard/InvoiceList";
 
-
-if (typeof window !== 'undefined') {
-  if(localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-}
-
-const Dashboard = () => {
+const dashboard = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
@@ -43,12 +33,10 @@ const Dashboard = () => {
             <div className="container">
               <div className="row">
 
-                <div className="col-md-6">
-                  <RegisterForm />
-                </div>
+                <div className="col-md-12">
 
-                <div className="col-md-6">
-                  <LoginForm />
+                  <InvoiceList />
+
                 </div>
 
               </div>
@@ -71,4 +59,4 @@ const Dashboard = () => {
   );
 };
 
-export default withLocale(Dashboard);
+export default withLocale(dashboard);

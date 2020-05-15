@@ -1,31 +1,29 @@
-import React, { Component } from "react";
+import React, {useEffect} from "react";
 import { connect } from 'react-redux';
 import { fetchInvoices } from '../../actions';
 
 import InvoiceListTable from "./InvoiceListTable";
 
-class InvoiceList extends Component {
+const InvoiceList = ({ fetchInvoices }) => {
 
-  componentDidMount() {
-    this.props.fetchInvoices();
-  }
+  useEffect(() => {
+    fetchInvoices()
+  }, []);
 
-  renderList() {
-    return <InvoiceListTable invoices={this.props.invoices} />;
-  }
+  const renderList = (invoices) => {
+    return <InvoiceListTable invoices={[]} />;
+  };
 
-  render() {
-    return (
-        <div className="container">
-          <div className="row">
-            <div className="ui relaxed divided list">
-              {this.renderList()}
-            </div>
+  return (
+      <div className="container">
+        <div className="row">
+          <div className="ui relaxed divided list">
+            {renderList()}
           </div>
         </div>
-    );
-  }
-}
+      </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return { invoices: state.invoices}

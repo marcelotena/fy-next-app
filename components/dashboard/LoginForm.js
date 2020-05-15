@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import Router from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
+import useTranslation from "../../hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginForm = () => {
+const LoginForm = ({ login, isAuthenticated }) => {
+  const { locale, t } = useTranslation();
   const classes = useStyles();
   const [ formData, setFormData ] = useState({
     email: '',
@@ -26,8 +32,13 @@ const LoginForm = () => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    console.log('SUCCESS');
+    login(email, password);
   };
+
+  // Redirect if logged in
+  if(isAuthenticated) {
+    Router.push(`/${locale}/dashboard`);
+  }
 
   return (
       <div>
@@ -75,4 +86,13 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(LoginForm);

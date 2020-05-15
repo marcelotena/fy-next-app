@@ -27,7 +27,7 @@ const Home = ({ homepage }) => {
         <div className="wrapper">
             <PageHeader />
 
-            <Nav locale={locale} isAdmin={false} />
+            <Nav locale={locale} isHome={true} />
 
 
             <Hero homepage={homepage} />

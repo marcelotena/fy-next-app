@@ -1,10 +1,14 @@
-import { Component } from 'react'
+import { Component, Fragment } from 'react'
 import Link from 'next/link'
 import Headroom from 'react-headroom'
 import ScrollspyNav from 'react-scrollspy-nav'
 import fetch from "isomorphic-unfetch";
 import {DOMAIN_URL, FY_CUSTOM_API, WP_REST_API} from "../utils/constants";
 import { defaultLocale } from "../translations/config"
+// Redux
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import { logout } from '../actions/auth';
 
 
 const processResponse = res => {
@@ -35,7 +39,7 @@ function getMenu(loc) {
 }
 
 
-export default class Nav extends Component {
+class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -100,13 +104,17 @@ export default class Nav extends Component {
 
   render() {
 
-    const { isAdmin } = this.props;
+    const { isHome, auth: { isAuthenticated, loading }, logout } = this.props;
     const { primarymenu } = this.state;
 
-    const renderMenu = () => {
-      if (isAdmin) {
-        return null;
-      } else {
+    const authLinks = (
+        <li className="Nav__item">
+          <a onClick={logout} href="#!">Logout</a>
+        </li>
+    );
+
+    const guestLinks = () => {
+      if (isHome) {
         return (
             <ScrollspyNav
                 scrollTargetIds={['services', 'clients', 'contact']}
@@ -120,6 +128,8 @@ export default class Nav extends Component {
               ))}
             </ScrollspyNav>
         );
+      } else {
+        return null;
       }
     };
 
@@ -148,7 +158,7 @@ export default class Nav extends Component {
 
                 <div className="col-md-6 col-sm-8 col-xs-9">
                   <ul>
-                    {renderMenu()}
+                    { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks() }</Fragment>)}
                   </ul>
                 </div>
               </div>
@@ -288,3 +298,15 @@ export default class Nav extends Component {
     )
   }
 }
+
+Nav.propTypes = {
+  isHome: PropTypes.bool,
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Nav);

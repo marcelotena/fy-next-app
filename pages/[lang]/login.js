@@ -34,7 +34,7 @@ const login = () => {
 
           <PageHeader />
 
-          <Nav locale={locale} isAdmin={true} />
+          <Nav locale={locale} isHome={false} />
 
           <div className="dashboard-content">
 

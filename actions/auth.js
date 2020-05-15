@@ -5,7 +5,8 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    LOGOUT
 } from "./types";
 import { DASHBOARD_API } from "../utils/constants";
 import { setAlert } from "./alert";
@@ -96,4 +97,9 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_FAIL
     });
   }
+};
+
+// Logout / Clear profile
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };

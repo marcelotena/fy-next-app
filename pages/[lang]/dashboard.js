@@ -9,6 +9,7 @@ import Nav from "../../components/Nav";
 import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
 import InvoiceList from "../../components/dashboard/InvoiceList";
+import Dashboard from '../../components/dashboard/Dashboard';
 
 const dashboard = () => {
   const { locale, t } = useTranslation();
@@ -24,7 +25,7 @@ const dashboard = () => {
 
           <PageHeader />
 
-          <Nav locale={locale} isAdmin={true} />
+          <Nav locale={locale} />
 
           <div className="dashboard-content">
 
@@ -35,7 +36,7 @@ const dashboard = () => {
 
                 <div className="col-md-12">
 
-                  <InvoiceList />
+                  <Dashboard />
 
                 </div>
 

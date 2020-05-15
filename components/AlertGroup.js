@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
-import Zoom from '@material-ui/core/Zoom';
+import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
 import {collapseAlert, removeAlert} from "../actions/alert";
 
@@ -34,7 +34,7 @@ const AlertGroup = ({ alerts, removeAlert, collapseAlert }) => {
         {alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => (
-          <Zoom in={alert.active} key={alert.id} timeout={collapseSpeed}>
+          <Collapse in={alert.active} key={alert.id} timeout={collapseSpeed}>
             <div className="container">
               <Alert
                   severity={alert.alertType}
@@ -52,7 +52,7 @@ const AlertGroup = ({ alerts, removeAlert, collapseAlert }) => {
                 { alert.msg }
               </Alert>
             </div>
-          </Zoom>
+          </Collapse>
         ))}
       </div>
   )

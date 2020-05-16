@@ -26,3 +26,4 @@ yarn-error.log*
 
 # jetbrains
 .idea
+.idea/workspace.xml

@@ -27,6 +27,3 @@ yarn-error.log*
 # jetbrains
 .idea
 .idea/workspace.xml
-
-# project
-utils/constants.js

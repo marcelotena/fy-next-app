@@ -18,10 +18,8 @@ const login = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if(localStorage.token) {
-        setAuthToken(localStorage.token);
-      }
+    if(localStorage.token) {
+      setAuthToken(localStorage.token);
     }
 
     store.dispatch(loadUser());

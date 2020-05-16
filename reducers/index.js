@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import invoicesReducer from "./invoicesReducer";
+import invoices from "./invoices";
 import alert from './alert';
 import auth from './auth';
 
 export default combineReducers({
-  invoices: invoicesReducer,
+  invoices,
   alert,
   auth
 });

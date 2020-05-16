@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { connect } from 'react-redux';
-import { fetchInvoices } from '../../actions';
+import { getInvoices } from '../../actions/invoices';
 
 import InvoiceListTable from "./InvoiceListTable";
 import PropTypes from "prop-types";

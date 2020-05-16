@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
 import Router from "next/router";
 import Headroom from 'react-headroom';
-import ScrollspyNav from 'react-scrollspy-nav';
 import fetch from "isomorphic-unfetch";
 import {DOMAIN_URL, FY_CUSTOM_API, WP_REST_API} from "../utils/constants";
 import { defaultLocale } from "../translations/config";
@@ -12,6 +11,13 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { logout } from '../actions/auth';
 import Button from "@material-ui/core/Button";
+import dynamic from "next/dynamic";
+
+
+const NoSSRScrollspyNav = dynamic(
+    () => import('../node_modules/react-scrollspy-nav'),
+    { ssr: false }
+);
 
 
 const processResponse = res => {
@@ -113,7 +119,6 @@ class Nav extends Component {
         <ul className="Nav__list Nav__list-small">
           <li className="Nav__item Nav__item-small">
             <Button
-                color="primary"
                 onClick={() => Router.push(`/${locale}/dashboard`)}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
@@ -122,7 +127,6 @@ class Nav extends Component {
           </li>
           <li className="Nav__item Nav__item-small">
             <Button
-                color="primary"
                 onClick={() => Router.push(`/${locale}/invoices`)}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
@@ -131,7 +135,6 @@ class Nav extends Component {
           </li>
           <li className="Nav__item Nav__item-small">
             <Button
-                color="primary"
                 startIcon={<ExitToAppOutlinedIcon />}
                 onClick={logout}
                 style={{ marginTop: 0, marginBottom: 0 }}
@@ -146,7 +149,7 @@ class Nav extends Component {
       if (isHome) {
         return (
             <ul className="Nav__list">
-              <ScrollspyNav
+              <NoSSRScrollspyNav
                   scrollTargetIds={['services', 'clients', 'contact']}
                   activeNavClass='active'
                   scrollDuration='500'
@@ -156,11 +159,23 @@ class Nav extends Component {
                       <a className="Nav__link" href={url}>{title}</a>
                     </li>
                 ))}
-              </ScrollspyNav>
+              </NoSSRScrollspyNav>
             </ul>
         );
       } else {
-        return null;
+        return (
+            <ul className="Nav__list Nav__list-small">
+              <li className="Nav__item Nav__item-small">
+                <Button
+                    startIcon={<ExitToAppOutlinedIcon />}
+                    onClick={() => Router.push(`/${locale}/`)}
+                    style={{ marginTop: 0, marginBottom: 0 }}
+                >
+                  Back home
+                </Button>
+              </li>
+            </ul>
+        );
       }
     };
 

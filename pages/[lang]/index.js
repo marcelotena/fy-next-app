@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PageHeader from "../../components/PageHeader";
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
@@ -15,17 +15,25 @@ import useTranslation from '../../hooks/useTranslation'
 import { defaultLocale } from "../../translations/config"
 import Cookies from "js-cookie";
 import {GApageView, initGA} from "../index";
+import store from "../store";
+import {Provider} from "react-redux";
+import {loadUser} from "../../actions/auth";
 
 
 
 const Home = ({ homepage }) => {
 
-    const { locale, t } = useTranslation()
+    const { locale, t } = useTranslation();
 
+    useEffect(() => {
+      store.dispatch(loadUser());
+    }, []);
 
     return (
         <div className="wrapper">
             <PageHeader />
+
+          <Provider store={store}>
 
             <Nav locale={locale} isHome={true} />
 
@@ -41,6 +49,9 @@ const Home = ({ homepage }) => {
 
 
             <Footer />
+
+
+          </Provider>
 
 
 

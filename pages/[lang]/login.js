@@ -10,7 +10,6 @@ import AlertGroup from '../../components/AlertGroup';
 // Redux
 import { Provider } from 'react-redux';
 import store from '../store';
-import setAuthToken from "../../utils/setAuthToken";
 import { loadUser } from '../../actions/auth';
 
 
@@ -18,10 +17,6 @@ const login = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
-    if(localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
-
     store.dispatch(loadUser());
   }, []);
 

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[lang]/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1587656725237" duration="5837000" />
       <workItem from="1587740923276" duration="2544000" />
       <workItem from="1588776146942" duration="19553000" />
-      <workItem from="1589474089920" duration="37589000" />
+      <workItem from="1589474089920" duration="37982000" />
     </task>
     <servers />
   </component>
@@ -139,10 +139,10 @@
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>
     <state width="1241" height="207" key="GridCell.Tab.0.right/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1588786166797" />
-    <state x="-2303" y="-322" width="667" height="486" key="find.popup" timestamp="1587744196026">
+    <state x="-2303" y="-322" width="667" height="486" key="find.popup" timestamp="1589631069496">
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>
-    <state x="-2303" y="-322" width="667" height="486" key="find.popup/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1587744196026" />
+    <state x="-2303" y="-322" width="667" height="486" key="find.popup/0.23.1280.727/-2560.-617.2560.1417@-2560.-617.2560.1417" timestamp="1589631069496" />
     <state x="-2254" y="-377" width="670" height="676" key="search.everywhere.popup" timestamp="1589480338778">
       <screen x="-2560" y="-617" width="2560" height="1417" />
     </state>

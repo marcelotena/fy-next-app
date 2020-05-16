@@ -14,16 +14,16 @@ import setAuthToken from "../../utils/setAuthToken";
 import { loadUser } from '../../actions/auth';
 
 
-if (typeof window !== 'undefined') {
-  if(localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-}
-
 const login = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if(localStorage.token) {
+        setAuthToken(localStorage.token);
+      }
+    }
+
     store.dispatch(loadUser());
   }, []);
 

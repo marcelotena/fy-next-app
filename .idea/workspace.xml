@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/invoices.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/invoices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/dashboard/InvoiceList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/InvoiceList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducers/invoicesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/invoices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/InvoiceListTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/InvoiceListTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[lang]/invoices.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/invoices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/invoices.js" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/invoices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +107,7 @@
       <workItem from="1587656725237" duration="5837000" />
       <workItem from="1587740923276" duration="2544000" />
       <workItem from="1588776146942" duration="19553000" />
-      <workItem from="1589474089920" duration="44530000" />
+      <workItem from="1589474089920" duration="47982000" />
     </task>
     <servers />
   </component>

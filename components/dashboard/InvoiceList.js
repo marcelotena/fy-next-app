@@ -5,16 +5,14 @@ import { getInvoices } from '../../actions/invoices';
 import InvoiceListTable from "./InvoiceListTable";
 import PropTypes from "prop-types";
 
-const InvoiceList = ({ getInvoices, invoices, isAuthenticated }) => {
-
-  useEffect(() => {
-    if(isAuthenticated) {
-      getInvoices();
-    }
-  }, []);
+const InvoiceList = ({ invoices, isAuthenticated }) => {
 
   const renderList = () => {
-    return <InvoiceListTable invoices={invoices} />;
+    if(invoices.length > 0) {
+      return <InvoiceListTable invoices={invoices} />;
+    } else {
+      return null;
+    }
   };
 
   return (
@@ -29,16 +27,15 @@ const InvoiceList = ({ getInvoices, invoices, isAuthenticated }) => {
 };
 
 InvoiceList.propTypes = {
-  getInvoices: PropTypes.func.isRequired,
   invoices: PropTypes.array,
   isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
-    invoices: state.invoices,
+    invoices: state.invoices.invoices,
     isAuthenticated: state.auth.isAuthenticated
   }
 };
 
-export default connect(mapStateToProps, { getInvoices })(InvoiceList);
+export default connect(mapStateToProps)(InvoiceList);

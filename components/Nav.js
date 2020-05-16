@@ -115,6 +115,11 @@ class Nav extends Component {
     const { isHome, auth: { isAuthenticated, loading }, logout, locale } = this.props;
     const { primarymenu } = this.state;
 
+    const logoutAndRedirect = () => {
+      logout();
+      Router.push(`/${locale}/login`);
+    };
+
     const authLinks = (
         <ul className="Nav__list Nav__list-small">
           <li className="Nav__item Nav__item-small">
@@ -136,7 +141,7 @@ class Nav extends Component {
           <li className="Nav__item Nav__item-small">
             <Button
                 startIcon={<ExitToAppOutlinedIcon />}
-                onClick={logout}
+                onClick={logoutAndRedirect}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
               Logout

@@ -385,17 +385,17 @@ const InvoiceListTable = ({ invoices }) => {
                 {stableSort(invoices, getComparator(order, orderBy))
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row, index) => {
-                      const isItemSelected = isSelected(row.id);
-                      const labelId = `enhanced-table-checkbox-${row.id}`;
+                      const isItemSelected = isSelected(row._id);
+                      const labelId = `enhanced-table-checkbox-${row._id}`;
 
                       return (
                           <StyledTableRow
                               hover
-                              onClick={(event) => handleClick(event, row.id)}
+                              onClick={(event) => handleClick(event, row._id)}
                               role="checkbox"
                               aria-checked={isItemSelected}
                               tabIndex={-1}
-                              key={row.id}
+                              key={row._id}
                               selected={isItemSelected}
                           >
                             <TableCell padding="checkbox">
@@ -405,12 +405,12 @@ const InvoiceListTable = ({ invoices }) => {
                               />
                             </TableCell>
                             <TableCell component="th" id={labelId} scope="row" padding="none">
-                              {row.title}
+                              {row.invoiceName}
                             </TableCell>
-                            <TableCell align="center">{row.id}</TableCell>
-                            <TableCell align="center">{row.id}</TableCell>
-                            <TableCell align="center">{row.id}</TableCell>
-                            <TableCell align="center">{row.id}</TableCell>
+                            <TableCell align="center">{row.invoiceDate}</TableCell>
+                            <TableCell align="center">TODO</TableCell>
+                            <TableCell align="center">{parseFloat(Math.round(row.baseAmount * 100) / 100).toFixed(2)}€</TableCell>
+                            <TableCell align="center">{row.invoiceTax}%</TableCell>
                           </StyledTableRow>
                       );
                     })}

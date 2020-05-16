@@ -9,12 +9,14 @@ import Nav from "../../components/Nav";
 import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
 import InvoiceList from "../../components/dashboard/InvoiceList";
+import {getInvoices} from "../../actions/invoices";
 
 const invoices = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
     store.dispatch(loadUser());
+    store.dispatch(getInvoices());
   }, []);
 
   return (

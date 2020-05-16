@@ -15,7 +15,7 @@ import useTranslation from '../../hooks/useTranslation'
 import { defaultLocale } from "../../translations/config"
 import Cookies from "js-cookie";
 import {GApageView, initGA} from "../index";
-import store from "../store";
+import store from "../../components/store";
 import {Provider} from "react-redux";
 import {loadUser} from "../../actions/auth";
 

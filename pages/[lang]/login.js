@@ -9,7 +9,7 @@ import LoginForm from "../../components/dashboard/LoginForm";
 import AlertGroup from '../../components/AlertGroup';
 // Redux
 import { Provider } from 'react-redux';
-import store from '../store';
+import store from '../../components/store';
 import { loadUser } from '../../actions/auth';
 
 

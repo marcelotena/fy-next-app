@@ -9,7 +9,7 @@ const PageHeader = () => {
       <Head>
         <title>{`Fast and Yours`}</title>
         <meta name="description" content={`${t('homepage')}`} />
-        <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+        <meta name="viewport" content="width=device-width, maximum-scale=5, minimum-scale=1" />
 
         <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" href="/favicon/speeddial-160px.png" />

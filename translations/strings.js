@@ -13,6 +13,7 @@ const strings = {
         privacytext_title: "Cookies policy",
         privacypolicy_title: "Privacy policy",
         legaltext_title: "Legal notice",
+        language_switcher: "Language",
         legalnotice: `
             <h2>Objeto Social</h2>
             <p>FAST AND YOURS, SLU tiene como actividad principal la programación informática.</p>
@@ -168,6 +169,7 @@ const strings = {
         privacytext_title: "Política de cookies",
         privacypolicy_title: "Política de privacidad",
         legaltext_title: "Aviso legal",
+        language_switcher: "Idioma",
         legalnotice: `
             <h2>Objeto Social</h2>
             <p>FAST AND YOURS, SLU tiene como actividad principal la programación informática.</p>

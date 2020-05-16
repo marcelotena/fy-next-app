@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router"
 import { locales, languageNames } from "../translations/config"
 import { LocaleContext } from "../context/LocaleContext"
 import Select from 'react-select'
+import useTranslation from "../hooks/useTranslation";
 
 
 function localeProcess(optionsSelect, locales) {
@@ -20,8 +21,9 @@ function defaultValueSelect(locale) {
 
 
 const LocaleSwitcher = () => {
-    const router = useRouter()
-    const { locale } = React.useContext(LocaleContext)
+    const router = useRouter();
+    const { locale, t } = useTranslation();
+
     const handleLocaleChange = React.useCallback(
         e => {
             const regex = new RegExp(`^/(${locales.join("|")})`)
@@ -61,6 +63,8 @@ const LocaleSwitcher = () => {
                     styles={customStyles}
                     onChange={handleLocaleChange}
                     options={localeProcess(optionsSelect, locales)}
+                    getOptionLabel={option => `${option.label}`}
+                    placeholder={t('language_switcher')}
                 />
             </div>
 

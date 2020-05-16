@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react';
-import PageHeader from "../../components/PageHeader";
-import Nav from "../../components/Nav";
+import React, {useEffect} from 'react';
 import useTranslation from "../../hooks/useTranslation";
 import withLocale from '../../hocs/withLocale'
+import store from "../store";
+import {loadUser} from "../../actions/auth";
+import {Provider} from "react-redux";
+import PageHeader from "../../components/PageHeader";
+import Nav from "../../components/Nav";
+import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
-import RegisterForm from "../../components/dashboard/RegisterForm";
-import LoginForm from "../../components/dashboard/LoginForm";
-import AlertGroup from '../../components/AlertGroup';
-// Redux
-import { Provider } from 'react-redux';
-import store from '../store';
-import setAuthToken from "../../utils/setAuthToken";
-import { loadUser } from '../../actions/auth';
+import InvoiceList from "../../components/dashboard/InvoiceList";
 
-
-if (typeof window !== 'undefined') {
-  if(localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-}
-
-const login = () => {
+const invoices = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
@@ -34,7 +24,7 @@ const login = () => {
 
           <PageHeader />
 
-          <Nav locale={locale} isHome={false} />
+          <Nav locale={locale} />
 
           <div className="dashboard-content">
 
@@ -43,12 +33,10 @@ const login = () => {
             <div className="container">
               <div className="row">
 
-                <div className="col-md-6">
-                  <RegisterForm />
-                </div>
+                <div className="col-md-12">
 
-                <div className="col-md-6">
-                  <LoginForm />
+                  <InvoiceList />
+
                 </div>
 
               </div>
@@ -72,4 +60,4 @@ const login = () => {
   );
 };
 
-export default withLocale(login);
+export default withLocale(invoices);

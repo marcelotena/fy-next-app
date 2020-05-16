@@ -54,6 +54,7 @@ const dashboard = () => {
                 .dashboard-content {
                     padding-top: 40px;
                     padding-bottom: 70px;
+                    min-height: calc(100vh - 91px);
                 }
             `}</style>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
+import Router from "next/router";
 import Headroom from 'react-headroom';
 import ScrollspyNav from 'react-scrollspy-nav';
 import fetch from "isomorphic-unfetch";
@@ -105,11 +106,29 @@ class Nav extends Component {
 
 
   render() {
-    const { isHome, auth: { isAuthenticated, loading }, logout } = this.props;
+    const { isHome, auth: { isAuthenticated, loading }, logout, locale } = this.props;
     const { primarymenu } = this.state;
 
     const authLinks = (
         <ul className="Nav__list Nav__list-small">
+          <li className="Nav__item Nav__item-small">
+            <Button
+                color="primary"
+                onClick={() => Router.push(`/${locale}/dashboard`)}
+                style={{ marginTop: 0, marginBottom: 0 }}
+            >
+              Dashboard
+            </Button>
+          </li>
+          <li className="Nav__item Nav__item-small">
+            <Button
+                color="primary"
+                onClick={() => Router.push(`/${locale}/invoices`)}
+                style={{ marginTop: 0, marginBottom: 0 }}
+            >
+              Invoices
+            </Button>
+          </li>
           <li className="Nav__item Nav__item-small">
             <Button
                 color="primary"
@@ -222,7 +241,7 @@ class Nav extends Component {
                   }
                   
                   :global(.Nav__item-small) {
-                    padding: 0;
+                    padding: 0 10px;
                   }
                   
                   :global(.Nav__item:last-child) {

@@ -23,6 +23,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import toPrice from "../../utils/toPrice";
 
 
 
@@ -59,7 +60,8 @@ const headCells = [
   { id: 'date', numeric: true, disablePadding: false, label: 'Date' },
   { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
   { id: 'base', numeric: true, disablePadding: false, label: 'Base amount' },
-  { id: 'vat', numeric: true, disablePadding: false, label: 'VAT' },
+  { id: 'vat', numeric: true, disablePadding: false, label: 'IVA' },
+  { id: 'irpf', numeric: true, disablePadding: false, label: 'IRPF' },
 ];
 
 const StyledTableCell = withStyles((theme) => ({
@@ -409,8 +411,9 @@ const InvoiceListTable = ({ invoices }) => {
                             </TableCell>
                             <TableCell align="center">{row.invoiceDate}</TableCell>
                             <TableCell align="center">TODO</TableCell>
-                            <TableCell align="center">{parseFloat(Math.round(row.baseAmount * 100) / 100).toFixed(2)}€</TableCell>
-                            <TableCell align="center">{row.invoiceTax}%</TableCell>
+                            <TableCell align="center">{toPrice(row.baseAmount, row.currency)}</TableCell>
+                            <TableCell align="center">{toPrice(row.totalTax, row.currency)}</TableCell>
+                            <TableCell align="center">{toPrice(row.totalRetention, row.currency)}</TableCell>
                           </StyledTableRow>
                       );
                     })}

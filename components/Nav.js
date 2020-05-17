@@ -192,7 +192,7 @@ class Nav extends Component {
               paddingBottom: '86px',*/
               zIndex: '999',
               background: 'rgba(255, 255, 255, 0.9)',
-              boxShadow: '0 10px 10px 0 rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 10px 10px 0 rgba(0, 0, 0, 0.1)'
             }}
         >
           <nav>

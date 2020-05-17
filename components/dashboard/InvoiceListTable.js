@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 import clsx from 'clsx';
 import { lighten, withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -409,7 +410,7 @@ const InvoiceListTable = ({ invoices }) => {
                             <TableCell component="th" id={labelId} scope="row" padding="none">
                               {row.invoiceName}
                             </TableCell>
-                            <TableCell align="center">{row.invoiceDate}</TableCell>
+                            <TableCell align="center"><Moment format="DD/MM/YYYY">{row.invoiceDate}</Moment></TableCell>
                             <TableCell align="center">TODO</TableCell>
                             <TableCell align="center">{toPrice(row.baseAmount, row.currency)}</TableCell>
                             <TableCell align="center">{toPrice(row.totalTax, row.currency)}</TableCell>

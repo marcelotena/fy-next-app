@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createCustomer } from "../../../actions/customer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      marginBottom: theme.spacing(1)
+    },
+  },
+}));
 
-const CreateCustomer = props => {
+const CreateCustomer = ({ createCustomer, success }) => {
+  const classes = useStyles();
   const [formData, setFormData] = useState({
     name: '',
     companyId: '',
     address: '',
     email: '',
   });
+
+  useEffect(() => {
+    if(success) {
+      setFormData({
+        name: '',
+        companyId: '',
+        address: '',
+        email: '',
+      });
+    }
+  }, [success]);
 
   const { name, companyId, address, email } = formData;
 
@@ -28,7 +49,7 @@ const CreateCustomer = props => {
       <div>
         <h1>Create new customer</h1>
 
-        <form className={classes.root} noValidate autoComplete="off" onSubmit={e => onSubmit(e)}>
+        <form id="create-customer-form" className={classes.root} noValidate autoComplete="off" onSubmit={e => onSubmit(e)}>
 
           <div className={classes.root}>
             <TextField
@@ -96,7 +117,11 @@ const CreateCustomer = props => {
 };
 
 CreateCustomer.propTypes = {
-  
+  createCustomer: PropTypes.func.isRequired
 };
 
-export default connect(null, { createCustomer })(CreateCustomer);
+const mapStateToProps = state => ({
+  success: state.customer.success
+});
+
+export default connect(mapStateToProps, { createCustomer })(CreateCustomer);

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   CREATECUSTOMER_SUCCESS,
-  CREATECUSTOMER_FAIL
+  CREATECUSTOMER_FAIL,
+  RESET_CUSTOMERFORM_SUCCESS
 } from "./types";
 import { DASHBOARD_API } from "../utils/constants";
 import { setAlert } from "./alert";
@@ -22,9 +23,14 @@ export const createCustomer = ({ name, companyId, address, email }) => async dis
 
     dispatch({
       type: CREATECUSTOMER_SUCCESS,
-      payload: res.data
+      payload: res.data.data
     });
 
+    dispatch(setAlert(`Customer ${name} saved to database`, 'success'))
+
+    setTimeout(() => dispatch({
+      type: RESET_CUSTOMERFORM_SUCCESS,
+    }), 500);
   } catch (err) {
     const errors = err.response.data.error.split(',');
 

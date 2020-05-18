@@ -29,7 +29,7 @@ const login = () => {
 
           <Nav locale={locale} isHome={false} />
 
-          <div className="dashboard-content">
+          <div className="login-content">
 
             <AlertGroup />
 
@@ -55,7 +55,7 @@ const login = () => {
 
         { /*language=CSS*/ }
         <style jsx>{`            
-                .dashboard-content {
+                .login-content {
                     padding-top: 40px;
                     padding-bottom: 70px;
                     min-height: calc(100vh - 91px);

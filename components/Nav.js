@@ -120,7 +120,7 @@ class Nav extends Component {
 
 
   render() {
-    const { isHome, auth: { isAuthenticated, loading }, logout, locale } = this.props;
+    const { isHome, auth: { isAuthenticated, loading, user }, logout, locale } = this.props;
     const { primarymenu } = this.state;
 
     const logoutAndRedirect = () => {
@@ -130,21 +130,8 @@ class Nav extends Component {
 
     const authLinks = (
         <ul className="Nav__list Nav__list-small">
-          <li className="Nav__item Nav__item-small">
-            <NavFYButton
-                onClick={() => Router.push(`/${locale}/dashboard`)}
-                style={{ marginTop: 0, marginBottom: 0 }}
-            >
-              Dashboard
-            </NavFYButton>
-          </li>
-          <li className="Nav__item Nav__item-small">
-            <NavFYButton
-                onClick={() => Router.push(`/${locale}/invoices`)}
-                style={{ marginTop: 0, marginBottom: 0 }}
-            >
-              Invoices
-            </NavFYButton>
+          <li className="Nav__item">
+            Logged in as <b>{user ? user.name : ''}</b>
           </li>
           <li className="Nav__item Nav__item-small">
             <NavFYButton
@@ -262,7 +249,7 @@ class Nav extends Component {
                   }
                   
                   :global(.Nav__item) {
-                    padding: 4px 16px;
+                    padding: 8px 16px;
                     list-style: none;
                     float: left;
                     border-right: 1px solid #979797;

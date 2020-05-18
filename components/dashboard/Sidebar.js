@@ -3,8 +3,16 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
 import CardHeader from '@material-ui/core/CardHeader';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
+import Router from "next/router";
+import useTranslation from "../../hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 0,
       marginRight: 0
     }
+  },
+  lighticon: {
+    color: 'rgba(255, 255, 255, 0.9)'
   }
 }));
 
@@ -48,8 +59,19 @@ const LightIconButton = withStyles((theme) => ({
   },
 }))(IconButton);
 
+const LightListItemButton = withStyles((theme) => ({
+  root: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    '&:hover': {
+      color: 'rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(0, 0, 0, 0.25)'
+    },
+  }
+}))(ListItem);
+
 const Sidebar = props => {
   const { name, avatar, role } = props.user;
+  const { locale, t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -68,7 +90,47 @@ const Sidebar = props => {
             className={classes.card}
         />
 
-        <span></span>
+        <List component="nav" aria-label="main mailbox folders">
+          <LightListItemButton button onClick={() => Router.push(`/${locale}/dashboard`)}>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </LightListItemButton>
+          <LightListItemButton button onClick={() => Router.push(`/${locale}/invoices`)}>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Invoices" />
+          </LightListItemButton>
+          <LightListItemButton button>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Quotations" />
+          </LightListItemButton>
+        </List>
+        <Divider />
+        <List component="nav" aria-label="secondary mailbox folders">
+          <LightListItemButton button>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Users" />
+          </LightListItemButton>
+          <LightListItemButton button>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Customers" />
+          </LightListItemButton>
+          <LightListItemButton button>
+            <ListItemIcon>
+              <AssessmentOutlinedIcon className={classes.lighticon} />
+            </ListItemIcon>
+            <ListItemText primary="Issuers" />
+          </LightListItemButton>
+        </List>
 
         { /* language=CSS */ }
         <style jsx>{`

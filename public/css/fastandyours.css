@@ -98,6 +98,12 @@ section {
     min-height: 100vh;
 }
 
+@media screen and (min-height: 1080px) {
+    .dashboard-wrapper {
+        min-height: calc(100vh - 443px);
+    }
+}
+
 .dashboard-sidebar {
     position: absolute;
     top: 0;

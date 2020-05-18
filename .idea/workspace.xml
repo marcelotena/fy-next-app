@@ -4,10 +4,8 @@
     <list default="true" id="efe4fadb-dc7d-4d78-904a-ccc62c4142ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/InvoiceList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/InvoiceList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/dashboard/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/[lang]/invoices.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/invoices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[lang]/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[lang]/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/fastandyours.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/fastandyours.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +107,7 @@
       <workItem from="1588776146942" duration="19553000" />
       <workItem from="1589474089920" duration="50380000" />
       <workItem from="1589713866012" duration="18489000" />
-      <workItem from="1589821827089" duration="2347000" />
+      <workItem from="1589821827089" duration="5054000" />
     </task>
     <servers />
   </component>

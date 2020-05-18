@@ -4,10 +4,10 @@ import withAuth from '../../hocs/withAuth';
 import { connect } from 'react-redux';
 // Custom components
 import AlertGroup from '../AlertGroup';
-import CreateCustomer from "./customer/CreateCustomer";
 import Sidebar from "./Sidebar";
+import InvoiceList from "./InvoiceList";
 
-const Dashboard = ({ user }) => {
+const Invoices = ({ user }) => {
 
   return (
       <div className="dashboard-wrapper">
@@ -20,7 +20,7 @@ const Dashboard = ({ user }) => {
 
           <AlertGroup />
 
-          <CreateCustomer />
+          <InvoiceList />
 
         </div>
 
@@ -28,7 +28,7 @@ const Dashboard = ({ user }) => {
   );
 };
 
-Dashboard.propTypes = {
+Invoices.propTypes = {
   user: PropTypes.object.isRequired
 };
 
@@ -36,4 +36,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps)(withAuth(Dashboard));
+export default connect(mapStateToProps)(withAuth(Invoices));

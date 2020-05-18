@@ -6,10 +6,9 @@ import {loadUser} from "../../actions/auth";
 import {Provider} from "react-redux";
 import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
-import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
-import InvoiceList from "../../components/dashboard/InvoiceList";
 import {getInvoices} from "../../actions/invoices";
+import Invoices from "../../components/dashboard/Invoices";
 
 const invoices = () => {
   const { locale, t } = useTranslation();
@@ -28,21 +27,9 @@ const invoices = () => {
 
           <Nav locale={locale} />
 
-          <div className="dashboard-content">
+          <div>
 
-            <AlertGroup />
-
-            <div className="container">
-              <div className="row">
-
-                <div className="col-md-12">
-
-                  <InvoiceList />
-
-                </div>
-
-              </div>
-            </div>
+            <Invoices />
 
           </div>
 

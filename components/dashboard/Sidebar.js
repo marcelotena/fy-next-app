@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
       color: 'white'
     },
     '& .MuiTypography-colorTextSecondary': {
-      color: 'white'
+      color: 'white',
+      fontFamily: 'Montserrat, -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif'
     },
     '& .MuiCardHeader-action': {
       marginTop: 0,
@@ -39,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
 
 const LightIconButton = withStyles((theme) => ({
   root: {
-    color: theme.palette.getContrastText('rgba(255, 255, 255, 0.84)'),
-    backgroundColor: 'rgba(255, 255, 255, 0.84)',
+    color: theme.palette.getContrastText('rgba(255, 255, 255, 0.9)'),
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.54)',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
     },
   },
 }))(IconButton);

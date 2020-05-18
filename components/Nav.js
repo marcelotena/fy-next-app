@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import { logout } from '../actions/auth';
 import Button from "@material-ui/core/Button";
 import dynamic from "next/dynamic";
+import { withStyles } from "@material-ui/core/styles";
 
 
 const NoSSRScrollspyNav = dynamic(
@@ -47,6 +48,13 @@ function getMenu(loc) {
   return fetch(url).then(processResponse)
 }
 
+const NavFYButton = withStyles((theme) => ({
+  root: {
+    fontFamily: 'Montserrat, -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif',
+    fontWeight: 'bold',
+    textTransform: 'none'
+  },
+}))(Button);
 
 class Nav extends Component {
   constructor(props) {
@@ -123,29 +131,29 @@ class Nav extends Component {
     const authLinks = (
         <ul className="Nav__list Nav__list-small">
           <li className="Nav__item Nav__item-small">
-            <Button
+            <NavFYButton
                 onClick={() => Router.push(`/${locale}/dashboard`)}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
               Dashboard
-            </Button>
+            </NavFYButton>
           </li>
           <li className="Nav__item Nav__item-small">
-            <Button
+            <NavFYButton
                 onClick={() => Router.push(`/${locale}/invoices`)}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
               Invoices
-            </Button>
+            </NavFYButton>
           </li>
           <li className="Nav__item Nav__item-small">
-            <Button
+            <NavFYButton
                 startIcon={<ExitToAppOutlinedIcon />}
                 onClick={logoutAndRedirect}
                 style={{ marginTop: 0, marginBottom: 0 }}
             >
               Logout
-            </Button>
+            </NavFYButton>
           </li>
         </ul>
     );

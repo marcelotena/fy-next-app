@@ -16,12 +16,8 @@ const InvoiceList = ({ invoices, isAuthenticated }) => {
   };
 
   return (
-      <div className="container">
-        <div className="row">
-          <div className="ui relaxed divided list">
-            {renderList()}
-          </div>
-        </div>
+      <div className="ui relaxed divided list">
+        {renderList()}
       </div>
   );
 };

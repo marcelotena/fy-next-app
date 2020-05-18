@@ -55,6 +55,9 @@ const dashboard = () => {
                     padding-bottom: 70px;
                     min-height: calc(100vh - 91px);
                 }
+                :global(h1) {
+                    margin-top: 0;
+                }
             `}</style>
       </div>
   );

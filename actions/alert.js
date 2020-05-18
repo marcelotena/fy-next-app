@@ -11,16 +11,50 @@ export const setAlert = (msg, alertType) => dispatch => {
   });
 };
 
-export const removeAlert = (id, collapseSpeed) => dispatch => {
+export const removeAlert = (id, collapseSpeed) => (dispatch, getState) => {
 
-  dispatch({
-    type: COLLAPSE_ALERT,
-    payload: id
-  });
+  if(id === 'all') {
 
-  setTimeout(() => dispatch({
-              type: REMOVE_ALERT,
-              payload: id
-            }), collapseSpeed);
+    // Remove all alerts
+    const items = getState().alert;
+
+    const removeAlertsDelayed = (i, alerts, cb) => {
+      if (cb) {
+        if (i >= alerts.length) return cb();
+      } else {
+        if (i >= alerts.length) return null;
+      }
+
+      dispatch({
+        type: COLLAPSE_ALERT,
+        payload: alerts[i].id
+      });
+
+      setTimeout(() => dispatch({
+        type: REMOVE_ALERT,
+        payload: alerts[i].id
+      }), collapseSpeed);
+
+      setTimeout(removeAlertsDelayed, 250, i+1, alerts, cb);
+    };
+
+    removeAlertsDelayed(0, items);
+
+  } else {
+
+    // Remove single alert
+    dispatch({
+      type: COLLAPSE_ALERT,
+      payload: id
+    });
+
+    setTimeout(() => dispatch({
+      type: REMOVE_ALERT,
+      payload: id
+    }), collapseSpeed);
+
+  }
+
+
 
 };

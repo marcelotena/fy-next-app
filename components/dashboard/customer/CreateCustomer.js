@@ -94,7 +94,6 @@ const CreateCustomer = ({ createCustomer, success }) => {
             <TextField
                 id="register-email"
                 name="email"
-                required
                 label="Email address"
                 variant="outlined"
                 value={email}

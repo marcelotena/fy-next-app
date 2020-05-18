@@ -6,7 +6,6 @@ import {loadUser} from "../../actions/auth";
 import {Provider} from "react-redux";
 import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
-import AlertGroup from "../../components/AlertGroup";
 import Footer from "../../components/Footer";
 import Dashboard from '../../components/dashboard/Dashboard';
 
@@ -26,21 +25,9 @@ const dashboard = () => {
 
           <Nav locale={locale} />
 
-          <div className="dashboard-content">
+          <div>
 
-            <AlertGroup />
-
-            <div className="container">
-              <div className="row">
-
-                <div className="col-md-12">
-
-                  <Dashboard />
-
-                </div>
-
-              </div>
-            </div>
+            <Dashboard />
 
           </div>
 
@@ -49,12 +36,7 @@ const dashboard = () => {
         </Provider>
 
         { /*language=CSS*/ }
-        <style jsx>{`            
-                .dashboard-content {
-                    padding-top: 40px;
-                    padding-bottom: 70px;
-                    min-height: calc(100vh - 91px);
-                }
+        <style jsx>{`   
                 :global(h1) {
                     margin-top: 0;
                 }

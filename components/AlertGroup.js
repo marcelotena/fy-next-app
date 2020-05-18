@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     '& > * + *': {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(2)
     },
   },
   button: {
@@ -29,44 +29,40 @@ const AlertGroup = ({ alerts, removeAlert }) => {
   const collapseSpeed = 400;
 
   return (
-      <div className={classes.root}>
+      <div className={classes.root} style={{ marginBottom: '30px' }}>
         {alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => (
           <Collapse in={alert.active} key={alert.id} timeout={collapseSpeed}>
-            <div className="container">
-              <Alert
-                  severity={alert.alertType}
-                  action={
-                    <IconButton
-                        aria-label="close"
-                        color="inherit"
-                        size="small"
-                        onClick={() => removeAlert(alert.id, collapseSpeed)}
-                    >
-                      <CloseIcon fontSize="inherit" />
-                    </IconButton>
-                  }
-              >
-                { alert.msg }
-              </Alert>
-            </div>
+            <Alert
+                severity={alert.alertType}
+                action={
+                  <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => removeAlert(alert.id, collapseSpeed)}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+            >
+              { alert.msg }
+            </Alert>
           </Collapse>
         ))}
         {alerts !== null &&
         alerts.length > 0 ? (
-                <div className="container">
-                  <Button
-                  variant="outlined"
-                  color="primary"
-                  size="small"
-                  className={classes.button}
-                  startIcon={<CloseIcon />}
-                  onClick={() => removeAlert('all', collapseSpeed)}
-                  >
-                  Clear all
-                  </Button>
-                </div>
+            <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                className={classes.button}
+                startIcon={<CloseIcon />}
+                onClick={() => removeAlert('all', collapseSpeed)}
+            >
+              Clear all
+            </Button>
           ) : ''}
       </div>
   )

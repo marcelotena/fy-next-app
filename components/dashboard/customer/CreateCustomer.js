@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       marginBottom: theme.spacing(1)
     },
-  },
+  }
 }));
 
 const CreateCustomer = ({ createCustomer, success }) => {
@@ -47,9 +47,9 @@ const CreateCustomer = ({ createCustomer, success }) => {
 
   return (
       <div>
-        <h1>Create new customer</h1>
+        <h1 className="Home__section-title">Create new customer</h1>
 
-        <form id="create-customer-form" className={classes.root} noValidate autoComplete="off" onSubmit={e => onSubmit(e)}>
+        <form id="create-customer-form" noValidate autoComplete="off" onSubmit={e => onSubmit(e)} style={{ marginTop: '40px' }}>
 
           <div className={classes.root}>
             <TextField

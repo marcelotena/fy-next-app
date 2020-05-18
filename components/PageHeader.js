@@ -22,6 +22,7 @@ const PageHeader = () => {
 
         <link rel="stylesheet" href="/css/swiper.min.css" />
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/fastandyours.css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet" />
       </Head>
   );

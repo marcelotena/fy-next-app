@@ -1,55 +1,63 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import withAuth from '../../hocs/withAuth';
 import { connect } from 'react-redux';
-// Material-ui
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 // Custom components
+import AlertGroup from '../AlertGroup';
 import CreateCustomer from "./customer/CreateCustomer";
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  small: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-  },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
+import Sidebar from "./Sidebar";
 
 const Dashboard = ({ user }) => {
-  const classes = useStyles();
 
   return (
-      <div>
-        <h1>Dashboard</h1>
+      <div className="dashboard-wrapper">
 
-        <div className="row">
+        <div className="dashboard-sidebar hidden-sm hidden-xs bg-darkgray">
+          <Sidebar user={user} />
+        </div>
 
-          <div className="col-md-3">
-            <Avatar alt={user.name} src={user.avatar} className={classes.large} />
-            <p>{user.name} <span>({user.role})</span></p>
-            <div>{user.email}</div>
-          </div>
+        <div className="dashboard-content">
 
-          <div className="col-md-9">
+          <AlertGroup />
 
-            <CreateCustomer />
-
-          </div>
+          <CreateCustomer />
 
         </div>
 
-
+        { /* language=CSS */ }
+        <style jsx>{`
+          .dashboard-wrapper {
+            display: flex;
+            justify-content: space-between;
+          }
+        
+          .dashboard-sidebar {
+            width: 320px;
+            height: calc(100vh - 91px);
+            z-index: 4;
+            overflow: auto;
+            position: relative;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            transition-duration: .2s, .2s, .35s;
+            transition-property: top, bottom, width;
+            transition-timing-function: linear, linear, ease;
+          }
+          
+          .sidebar-bg {
+            background: #4a4a4a;
+          }
+          
+          .dashboard-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            
+            width: calc(100% - 320px);
+            padding: 30px;
+          }
+            `}</style>
       </div>
   );
 };

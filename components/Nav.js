@@ -153,10 +153,12 @@ class Nav extends Component {
                 activeNavClass='active'
                 scrollDuration='500'
             >
-              <ul className="Nav__list">
+              <ul className="Nav__list Nav__list-small">
                 {primarymenu.map(({ id, url, title }) => (
                     <li className="Nav__item" key={id}>
-                      <a className="Nav__link" href={url}>{title}</a>
+                      <Link href={url}>
+                        <a className="Nav__link">{title}</a>
+                      </Link>
                     </li>
                 ))}
               </ul>
@@ -166,13 +168,16 @@ class Nav extends Component {
         return (
             <ul className="Nav__list Nav__list-small">
               <li className="Nav__item Nav__item-small">
-                <Button
-                    startIcon={<ExitToAppOutlinedIcon />}
-                    onClick={() => Router.push(`/${locale}/`)}
-                    style={{ marginTop: 0, marginBottom: 0 }}
-                >
-                  Back home
-                </Button>
+                <Link href="/">
+                  <a>
+                    <Button
+                        startIcon={<ExitToAppOutlinedIcon />}
+                        style={{ marginTop: 0, marginBottom: 0 }}
+                    >
+                      Back home
+                    </Button>
+                  </a>
+                </Link>
               </li>
             </ul>
         );
@@ -224,7 +229,7 @@ class Nav extends Component {
                     z-index: 101;
                     text-align: center;
                     padding-top: 15px;
-                    padding-bottom: 14px;
+                    padding-bottom: 15px;
 
                     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
                   }
@@ -270,6 +275,7 @@ class Nav extends Component {
                     font-weight: 600;
                     transition: color 0.3s ease-in-out;
                   }
+                  
                   :global(.Nav__link:visited) {
                     color: #4a4a4a;
                   }

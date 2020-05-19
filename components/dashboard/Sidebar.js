@@ -14,7 +14,7 @@ import Link from "next/link";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
-import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import BarChartOutlinedIcon from '@material-ui/icons/BarChartOutlined';
 
@@ -125,7 +125,7 @@ const Sidebar = props => {
             <a>
               <LightListItemButton button>
                 <ListItemIcon>
-                  <MonetizationOnOutlinedIcon className={classes.lighticon} />
+                  <ShoppingCartOutlinedIcon className={classes.lighticon} />
                 </ListItemIcon>
                 <ListItemText primary="Customers" />
               </LightListItemButton>

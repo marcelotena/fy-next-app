@@ -9,7 +9,7 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import {getInvoices} from "../../actions/invoices";
 import Dashboard from "../../components/dashboard/Dashboard";
-import InvoiceList from "../../components/dashboard/InvoiceList";
+import InvoiceList from "../../components/dashboard/invoices/InvoiceList";
 
 const invoices = () => {
   const { locale, t } = useTranslation();

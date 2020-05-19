@@ -2,19 +2,21 @@ import React, {useEffect} from 'react';
 import useTranslation from "../../hooks/useTranslation";
 import withLocale from '../../hocs/withLocale'
 import store from "../../components/store";
-import {loadUser} from "../../actions/auth";
-import {Provider} from "react-redux";
+import { loadUser } from "../../actions/auth";
+//import { getCustomers } from "../../actions/customer";
+import { Provider } from "react-redux";
 import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import Dashboard from '../../components/dashboard/Dashboard';
-import Summary from "../../components/dashboard/summary/Summary";
+import Dashboard from "../../components/dashboard/Dashboard";
+import CreateCustomer from "../../components/dashboard/customer/CreateCustomer";
 
-const dashboard = () => {
+const customers = () => {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
     store.dispatch(loadUser());
+    //store.dispatch(getCustomers());
   }, []);
 
   return (
@@ -26,7 +28,7 @@ const dashboard = () => {
 
           <Nav locale={locale} />
 
-          <Dashboard component={<Summary />} />
+          <Dashboard component={<CreateCustomer />} />
 
           <Footer />
 
@@ -36,4 +38,4 @@ const dashboard = () => {
   );
 };
 
-export default withLocale(dashboard);
+export default withLocale(customers);

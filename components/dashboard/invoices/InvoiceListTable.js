@@ -24,7 +24,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import toPrice from "../../utils/toPrice";
+import toPrice from "../../../utils/toPrice";
 
 
 

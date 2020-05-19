@@ -1,11 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { connect } from 'react-redux';
-import { getInvoices } from '../../actions/invoices';
 
 import InvoiceListTable from "./InvoiceListTable";
 import PropTypes from "prop-types";
 
-const InvoiceList = ({ invoices, isAuthenticated }) => {
+const InvoiceList = ({ invoices }) => {
 
   const renderList = () => {
     if(invoices.length > 0) {
@@ -23,14 +22,12 @@ const InvoiceList = ({ invoices, isAuthenticated }) => {
 };
 
 InvoiceList.propTypes = {
-  invoices: PropTypes.array,
-  isAuthenticated: PropTypes.bool
+  invoices: PropTypes.array
 };
 
 const mapStateToProps = state => {
   return {
-    invoices: state.invoices.invoices,
-    isAuthenticated: state.auth.isAuthenticated
+    invoices: state.invoices.invoices
   }
 };
 

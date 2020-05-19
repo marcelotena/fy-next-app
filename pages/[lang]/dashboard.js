@@ -8,6 +8,7 @@ import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import Dashboard from '../../components/dashboard/Dashboard';
+import CreateCustomer from "../../components/dashboard/customer/CreateCustomer";
 
 const dashboard = () => {
   const { locale, t } = useTranslation();
@@ -25,11 +26,7 @@ const dashboard = () => {
 
           <Nav locale={locale} />
 
-          <div>
-
-            <Dashboard />
-
-          </div>
+          <Dashboard component={<CreateCustomer />} />
 
           <Footer />
 

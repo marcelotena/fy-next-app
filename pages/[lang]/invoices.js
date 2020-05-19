@@ -8,7 +8,8 @@ import PageHeader from "../../components/PageHeader";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import {getInvoices} from "../../actions/invoices";
-import Invoices from "../../components/dashboard/Invoices";
+import Dashboard from "../../components/dashboard/Dashboard";
+import InvoiceList from "../../components/dashboard/InvoiceList";
 
 const invoices = () => {
   const { locale, t } = useTranslation();
@@ -27,24 +28,12 @@ const invoices = () => {
 
           <Nav locale={locale} />
 
-          <div>
-
-            <Invoices />
-
-          </div>
+          <Dashboard component={<InvoiceList />} />
 
           <Footer />
 
         </Provider>
 
-        { /*language=CSS*/ }
-        <style jsx>{`            
-                .dashboard-content {
-                    padding-top: 40px;
-                    padding-bottom: 70px;
-                    min-height: calc(100vh - 91px);
-                }
-            `}</style>
       </div>
   );
 };

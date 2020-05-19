@@ -73,98 +73,93 @@ const Sidebar = props => {
   const classes = useStyles();
 
   return (
-      <div className="sidebar-inner">
-        <CardHeader
-            avatar={
-              <Avatar alt={name} src={avatar} />
-            }
-            title={name}
-            subheader={role}
-            className={classes.card}
-        />
+      <div className="dashboard-sidebar hidden-sm hidden-xs bg-darkgray">
+        <div className="sidebar-inner">
+          <CardHeader
+              avatar={
+                <Avatar alt={name} src={avatar} />
+              }
+              title={name}
+              subheader={role}
+              className={classes.card}
+          />
 
-        <List component="nav" aria-label="dashboard summary">
-          <Link href={`/${locale}/dashboard`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <DashboardOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
-              </LightListItemButton>
-            </a>
-          </Link>
-        </List>
+          <List component="nav" aria-label="dashboard summary">
+            <Link href={`/${locale}/dashboard`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <DashboardOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </LightListItemButton>
+              </a>
+            </Link>
+          </List>
 
-        <Divider className={classes.lightdivider} />
+          <Divider className={classes.lightdivider} />
 
-        <List component="nav" aria-label="main admin folders">
-          <Link href={`/${locale}/users`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <PeopleAltOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Users" />
-              </LightListItemButton>
-            </a>
-          </Link>
+          <List component="nav" aria-label="main admin folders">
+            <Link href={`/${locale}/users`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <PeopleAltOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Users" />
+                </LightListItemButton>
+              </a>
+            </Link>
 
-          <Link href={`/${locale}/issuers`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <WorkOutlineOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Issuers" />
-              </LightListItemButton>
-            </a>
-          </Link>
+            <Link href={`/${locale}/issuers`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <WorkOutlineOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Issuers" />
+                </LightListItemButton>
+              </a>
+            </Link>
 
-          <Link href={`/${locale}/customers`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <ShoppingCartOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Customers" />
-              </LightListItemButton>
-            </a>
-          </Link>
-        </List>
+            <Link href={`/${locale}/customers`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <ShoppingCartOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Customers" />
+                </LightListItemButton>
+              </a>
+            </Link>
+          </List>
 
-        <Divider className={classes.lightdivider} />
+          <Divider className={classes.lightdivider} />
 
-        <List component="nav" aria-label="secondary document folders">
-          <Link href={`/${locale}/invoices`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <DescriptionOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Invoices" />
-              </LightListItemButton>
-            </a>
-          </Link>
+          <List component="nav" aria-label="secondary document folders">
+            <Link href={`/${locale}/invoices`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <DescriptionOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Invoices" />
+                </LightListItemButton>
+              </a>
+            </Link>
 
-          <Link href={`/${locale}/quotations`}>
-            <a>
-              <LightListItemButton button>
-                <ListItemIcon>
-                  <BarChartOutlinedIcon className={classes.lighticon} />
-                </ListItemIcon>
-                <ListItemText primary="Quotations" />
-              </LightListItemButton>
-            </a>
-          </Link>
-        </List>
-
-        { /* language=CSS */ }
-        <style jsx>{`
-          .sidebar-inner {
-            padding: 15px;
-          }
-            `}</style>
+            <Link href={`/${locale}/quotations`}>
+              <a>
+                <LightListItemButton button>
+                  <ListItemIcon>
+                    <BarChartOutlinedIcon className={classes.lighticon} />
+                  </ListItemIcon>
+                  <ListItemText primary="Quotations" />
+                </LightListItemButton>
+              </a>
+            </Link>
+          </List>
+        </div>
       </div>
   );
 };

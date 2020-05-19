@@ -125,6 +125,10 @@ section {
     background: #4a4a4a;
 }
 
+.sidebar-inner {
+    padding: 15px;
+}
+
 .dashboard-content {
     display: flex;
     flex-direction: column;
